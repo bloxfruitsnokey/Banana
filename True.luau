@@ -14,49 +14,6 @@ pcall(function()
 	end;
 end);
 loadstring(game:HttpGet("https://pastefy.app/sH58OT30/raw"))()
-local Y = game.Players;
-local d = Y.LocalPlayer;
-local R = d.Character.HumanoidRootPart;
-local Q = game:GetService("ReplicatedStorage");
-local r = d.Data.Level.Value;
-local a = game:GetService("TeleportService");
-local w = game:GetService("TweenService");
-local F = game:GetService("Lighting");
-local M = workspace.Enemies;
-local K = game:GetService("VirtualInputManager");
-local n = game:GetService("VirtualUser");
-local I = d.Team;
-local W = game:GetService("RunService");
-local N = game:GetService("Stats");
-local D = d.Character.Energy.Value;
-local A = game:GetService("Players");
-local u = A.LocalPlayer:WaitForChild("PlayerGui");
-local g = A.LocalPlayer;
-local z = g:WaitForChild("Backpack");
-local i = g.Character or g.CharacterAdded:Wait();
--- Refresh cached character refs setiap respawn, kalau tidak loop farm terus
--- nunjuk ke character mati dan auto farm berhenti setelah mati
-g.CharacterAdded:Connect(function(char)
-	i = char;
-	local hrp = char:WaitForChild("HumanoidRootPart", 20);
-	if hrp then
-		R = hrp;
-	end;
-end);
-local U = {};
-local C = {};
-local v = {};
-local m = {};
-local y = false;
-local b = false;
-local c = true;
-local H = false;
-local S = false;
-local o = false;
-local Z = false;
-local T = .1;
-local L = 0;
-local P = 25;
 local MasteryHealthPct = 70;
 local MasteryAimbot = false;
 local DoubleAttack = false;
