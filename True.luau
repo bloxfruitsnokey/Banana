@@ -13,7 +13,302 @@ pcall(function()
 		CU.ApplyDamageHighlight = function() end;
 	end;
 end);
-loadstring(game:HttpGet("https://pastefy.app/sH58OT30/raw"))()
+local DanhNhanhBuCu36 = {}
+local HacNoCu = {}
+local BuCuAnhKo = {}
+
+local B1 = {}
+local B2 = {}
+local B3 = {}
+local B4 = {}
+local B5 = {}
+local B6 = {}
+local B7 = {}
+
+local X001 = game
+local X002 = X001:GetService("Players")
+local X003 = X001:GetService("RunService")
+local X004 = X001:GetService("ReplicatedStorage")
+local X005 = X001:GetService("Workspace")
+local X006 = X002.LocalPlayer
+
+local X007 = X006.Character or X006.CharacterAdded:Wait()
+local function DanhNhanhBuCu36_Wait(a, b)
+    local s, r = pcall(function()
+        return a:WaitForChild(b)
+    end)
+    return r
+end
+
+local X008 = DanhNhanhBuCu36_Wait(X005, "Enemies")
+local X009 = DanhNhanhBuCu36_Wait(X005, "Characters")
+local X010 = DanhNhanhBuCu36_Wait(X004, "Modules")
+local X011 = DanhNhanhBuCu36_Wait(X010, "Net")
+
+DanhNhanhBuCu36.Rate = 0.000000002
+DanhNhanhBuCu36.Enabled = true
+
+function DanhNhanhBuCu36.CoreCheck(a)
+    local h = a:FindFirstChild("Humanoid")
+    if h and h.Health > 0 then
+        return true
+    end
+    return false
+end
+
+function DanhNhanhBuCu36.PositionScan(ch, folder)
+    local p = ch:GetPivot().Position
+    local t = {}
+    local l = folder:GetChildren()
+    for i = 1, #l do
+        local m = l[i]
+        local h1 = m:FindFirstChild("Humanoid")
+        local h2 = m:FindFirstChild("HumanoidRootPart")
+        if h1 and h2 and h1.Health > 0 then
+            local d = (h2.Position - p).Magnitude
+            if d <= 60 then
+                t[#t+1] = m
+            end
+        end
+    end
+    return t
+end
+
+function DanhNhanhBuCu36.HeadExtract(list)
+    local result = {}
+    local c = #list
+    for i = 1, c do
+        local v = list[i]
+        local h = v:FindFirstChild("Head") or v.PrimaryPart
+        if h then
+            result[#result+1] = {v, h}
+        end
+    end
+    return result
+end
+
+function DanhNhanhBuCu36.CollectAll(ch)
+    local a = DanhNhanhBuCu36.PositionScan(ch, X008)
+    local b = DanhNhanhBuCu36.PositionScan(ch, X009)
+    local final = {}
+    for i=1,#a do final[#final+1] = a[i] end
+    for i=1,#b do final[#final+1] = b[i] end
+    return final
+end
+
+function DanhNhanhBuCu36.FastCore()
+    local c = X006.Character
+    if not c then return end
+
+    local tool = c:FindFirstChildOfClass("Tool")
+    if not tool then return end
+
+    local mobs = DanhNhanhBuCu36.CollectAll(c)
+    if #mobs < 1 then return end
+
+    local parts = DanhNhanhBuCu36.HeadExtract(mobs)
+    if #parts < 1 then return end
+
+    local A = X011["RE/RegisterAttack"]
+    local B = X011["RE/RegisterHit"]
+
+    A:FireServer(DanhNhanhBuCu36.Rate)
+    local head = parts[1][2]
+    B:FireServer(head, parts)
+end
+
+local REMOTE_TARGET
+local REMOTE_ID
+
+local function HacNoCu_Init()
+    local listA = {
+        X004.Util,
+        X004.Common,
+        X004.Remotes,
+        X004.Assets,
+        X004.FX
+    }
+
+    for _, c in next, listA do
+        local kids = c:GetChildren()
+        for _, n in next, kids do
+            if n:IsA("RemoteEvent") and n:GetAttribute("Id") then
+                REMOTE_TARGET = n
+                REMOTE_ID = n:GetAttribute("Id")
+            end
+        end
+
+        c.ChildAdded:Connect(function(n)
+            if n:IsA("RemoteEvent") and n:GetAttribute("Id") then
+                REMOTE_TARGET = n
+                REMOTE_ID = n:GetAttribute("Id")
+            end
+        end)
+    end
+end
+
+HacNoCu_Init()
+
+function HacNoCu.Execute()
+    local ch = X006.Character
+    if not ch then return end
+
+    local HRP = ch:FindFirstChild("HumanoidRootPart")
+    if not HRP then return end
+
+    local gather = {}
+
+    local function Q(folder)
+        local l = folder:GetChildren()
+        for i=1,#l do
+            local mob = l[i]
+            local hm = mob:FindFirstChild("Humanoid")
+            local hr = mob:FindFirstChild("HumanoidRootPart")
+            if hm and hr and hm.Health > 0 and mob ~= ch then
+                local dist = (hr.Position - HRP.Position).Magnitude
+                if dist <= 60 then
+                    local kids = mob:GetChildren()
+                    for _, k in ipairs(kids) do
+                        if k:IsA("BasePart") then
+                            gather[#gather+1] = {mob, k}
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    Q(X008)
+    Q(X009)
+
+    local tool = ch:FindFirstChildOfClass("Tool")
+
+    if #gather > 0 and tool and (tool:GetAttribute("WeaponType") == "Melee" or tool:GetAttribute("WeaponType") == "Sword") then
+        local seed = X010.Net.seed:InvokeServer()
+
+        local R1 = X011["RE/RegisterAttack"]
+        local R2 = X011["RE/RegisterHit"]
+
+        R1:FireServer()
+
+        local head = gather[1][1]:FindFirstChild("Head")
+        if not head then return end
+
+        R2:FireServer(head, gather, {})
+
+        if REMOTE_TARGET then
+            local code = "RE/RegisterHit"
+            local t = math.floor(X005:GetServerTimeNow()/10%10)+1
+
+            local encoded = string.gsub(code, ".", function(s)
+                return string.char(bit32.bxor(string.byte(s), t))
+            end)
+
+            local finalid = bit32.bxor(REMOTE_ID + 909090, seed * 2)
+
+            cloneref(REMOTE_TARGET):FireServer(
+                encoded,
+                finalid,
+                head,
+                gather
+            )
+        end
+    end
+end
+
+local function BuCuAnhKo_DisableCam()
+    local cam = require(X004.Util.CameraShaker)
+    cam:Stop()
+end
+
+local function BuCuAnhKo_StartLoops()
+    task.spawn(function()
+        while task.wait(DanhNhanhBuCu36.Rate) do
+            DanhNhanhBuCu36.FastCore()
+        end
+    end)
+
+    X003.Heartbeat:Connect(function()
+        pcall(HacNoCu.Execute)
+    end)
+end
+
+function BuCuAnhKo.Start()
+    BuCuAnhKo_DisableCam()
+    BuCuAnhKo_StartLoops()
+end
+
+BuCuAnhKo.Start()
+
+local Z001 = {}
+local Z002 = {}
+local Z003 = {}
+local Z004 = {}
+local Z005 = {}
+
+local function ExtraPad(a)
+    return tostring(a) .. tostring(a) .. tostring(a)
+end
+
+Z001.a = ExtraPad("d")
+Z002.b = ExtraPad("x")
+Z003.c = ExtraPad("o")
+Z004.d = ExtraPad("k")
+Z005.e = ExtraPad("p")
+
+local Accumulate = 0
+for i=1,1000 do
+    Accumulate = Accumulate + i
+end
+
+local Fake = {}
+for i=1,250 do
+    Fake[i] = i * 3
+end
+
+local function Empty(n)
+    local s = ""
+    for i=1, n do
+        s = s .. string.char((i % 26) + 97)
+    end
+    return s
+end
+
+local junk = Empty(5000)
+local junk2 = Empty(3000)
+local junk3 = Empty(2000)
+
+local RS=game.ReplicatedStorage
+local N=require(RS.Modules.Net)
+local C=require(RS.Modules.CombatUtil)
+local P=game.Players.LocalPlayer
+local hit=N:RemoteEvent("RegisterHit",true)
+local atk=RS.Modules.Net["RE/RegisterAttack"]
+
+task.spawn(function()
+    while task.wait() do
+        local c=P.Character
+        if not c then continue end
+        local r=c:FindFirstChild("HumanoidRootPart")
+        local t=c:FindFirstChildOfClass("Tool")
+        if not (r and t) then continue end
+        local w=C:GetWeaponName(t)
+        local id=tostring(P.UserId):sub(2,4)..tostring(coroutine.running()):sub(11,15)
+        local didy=false
+        for _,m in ipairs(workspace.Enemies:GetChildren()) do
+            local h,u=m:FindFirstChild("HumanoidRootPart"),m:FindFirstChild("Humanoid")
+            if h and u and u.Health>0 and (h.Position-r.Position).Magnitude<=60 then
+                if not didy then
+                    atk:FireServer()
+                    didy = true
+                end
+                hit:FireServer(h, {{m,h}},nil,nil,id)
+                C:ApplyDamageHighlight(m,c,w,h)
+            end
+        end
+    end
+end)
+
 local Y = game.Players;
 local d = Y.LocalPlayer;
 local R = d.Character.HumanoidRootPart;
