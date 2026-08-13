@@ -14,6 +14,49 @@ pcall(function()
 	end;
 end);
 loadstring(game:HttpGet("https://pastefy.app/sH58OT30/raw"))()
+local Y = game.Players;
+local d = Y.LocalPlayer;
+local R = d.Character.HumanoidRootPart;
+local Q = game:GetService("ReplicatedStorage");
+local r = d.Data.Level.Value;
+local a = game:GetService("TeleportService");
+local w = game:GetService("TweenService");
+local F = game:GetService("Lighting");
+local M = workspace.Enemies;
+local K = game:GetService("VirtualInputManager");
+local n = game:GetService("VirtualUser");
+local I = d.Team;
+local W = game:GetService("RunService");
+local N = game:GetService("Stats");
+local D = d.Character.Energy.Value;
+local A = game:GetService("Players");
+local u = A.LocalPlayer:WaitForChild("PlayerGui");
+local g = A.LocalPlayer;
+local z = g:WaitForChild("Backpack");
+local i = g.Character or g.CharacterAdded:Wait();
+-- Refresh cached character refs setiap respawn, kalau tidak loop farm terus
+-- nunjuk ke character mati dan auto farm berhenti setelah mati
+g.CharacterAdded:Connect(function(char)
+	i = char;
+	local hrp = char:WaitForChild("HumanoidRootPart", 20);
+	if hrp then
+		R = hrp;
+	end;
+end);
+local U = {};
+local C = {};
+local v = {};
+local m = {};
+local y = false;
+local b = false;
+local c = true;
+local H = false;
+local S = false;
+local o = false;
+local Z = false;
+local T = .1;
+local L = 0;
+local P = 25;
 local MasteryHealthPct = 70;
 local MasteryAimbot = false;
 local DoubleAttack = false;
@@ -1772,7 +1815,7 @@ local nz = {};
 local Iz = game:GetService("TweenService");
 local Wz = game:GetService("UserInputService");
 local Nz = game:GetService("RunService");
-function Dz(Y, d)
+local function Dz(Y, d)
 	local R = nil;
 	local Q = nil;
 	local r = nil;
@@ -1845,7 +1888,7 @@ local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
 gz.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 gz.AnchorPoint = Vector2.new(0, 1);
-gz.Image = "rbxassetid://87473648624192";
+gz.Image = "rbxassetid://140053788856550";
 gz.Size = UDim2.new(0, 50, 0, 50);
 gz.BorderColor3 = Color3.fromRGB(0, 0, 0);
 gz.Position = UDim2.new(.01, 0, .99, 0);
@@ -1967,7 +2010,7 @@ local Uz = function(Y)
 			N.AutomaticSize = Enum.AutomaticSize.Y;
 			N.TextWrapped = true;
 		end;
-		function z()
+		local function z()
 			(Iz:Create(r, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { Position = UDim2.new(1, 0, 0, 0) })):Play();
 			wait(.25);
 			Q:Destroy();
@@ -2086,7 +2129,7 @@ function Kz.CreateMain(Y)
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
-	F.Image = "rbxassetid://77901393544576";
+	F.Image = "rbxassetid://140053788856550";
 	M.Name = "TextLabelMain";
 	M.Parent = w;
 	M.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -2773,7 +2816,7 @@ function Kz.CreateMain(Y)
 				u.Padding = UDim.new(0, 5);
 				local z = Instance.new("UICorner", n);
 				z.CornerRadius = UDim.new(0, 2);
-				function i(Y)
+				local function i(Y)
 					local d = Y and UDim2.new(1, -12, 1, -12) or UDim2.new(0, 0, 0, 0);
 					local R = UDim2.new(.5, 0, .5, 0);
 					local Q = Vector2.new(.5, .5);
@@ -2783,7 +2826,7 @@ function Kz.CreateMain(Y)
 				if a then
 					i(r);
 				end;
-				function U()
+				local function U()
 					r = not r;
 					i(r);
 				end;
@@ -3208,7 +3251,7 @@ function Kz.CreateMain(Y)
 				local H = false;
 				local S = {};
 				local o = {};
-				function Z()
+				local function Z()
 					for Y in W(S) do
 						S[Y] = nil;
 					end;
@@ -3219,7 +3262,7 @@ function Kz.CreateMain(Y)
 					end;
 					b.Text = string.lower(b.Text);
 				end;
-				function T()
+				local function T()
 					local Y = {};
 					for Y, d in W(o) do
 						if string.find(d, b.Text) then
@@ -3234,7 +3277,7 @@ function Kz.CreateMain(Y)
 						end;
 					end;
 				end;
-				function k()
+				local function k()
 					for Y, d in next, v:GetChildren() do
 						if d:IsA("Frame") then
 							d:Destroy();
@@ -3242,7 +3285,7 @@ function Kz.CreateMain(Y)
 					end;
 				end;
 				local L = Q;
-				function P(Y)
+				local function P(Y)
 					W = Y or W;
 					k();
 					o = {};
@@ -3472,7 +3515,7 @@ function Kz.CreateMain(Y)
 								local d;
 								local R = 0;
 								local w = 0;
-								function M(d)
+								local function M(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										w = tick();
 										d.Changed:Connect(function()
@@ -3483,13 +3526,13 @@ function Kz.CreateMain(Y)
 										end);
 									end;
 								end;
-								function K(d)
+								local function K(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										Y = false;
 										w = 0;
 									end;
 								end;
-								function n(Y)
+								local function n(Y)
 									if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 										d = Y;
 									end;
@@ -3514,7 +3557,7 @@ function Kz.CreateMain(Y)
 								local d;
 								local R = 0;
 								local w = 0;
-								function M(d)
+								local function M(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										w = tick();
 										d.Changed:Connect(function()
@@ -3525,13 +3568,13 @@ function Kz.CreateMain(Y)
 										end);
 									end;
 								end;
-								function K(d)
+								local function K(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										Y = false;
 										w = 0;
 									end;
 								end;
-								function n(Y)
+								local function n(Y)
 									if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 										d = Y;
 									end;
@@ -3552,7 +3595,7 @@ function Kz.CreateMain(Y)
 									end;
 								end);
 							end;
-							function b(Y)
+							local function b(Y)
 								if tonumber(Y) <= Q then
 									z.Size = UDim2.new(0, 0 * F, 0, 6);
 									y(Q);
@@ -4080,7 +4123,7 @@ function Kz.CreateMain(Y)
 				local c;
 				local H = 0;
 				local S = 0;
-				function o(Y)
+				local function o(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseButton1 or Y.UserInputType == Enum.UserInputType.Touch then
 						S = tick();
 						Y.Changed:Connect(function()
@@ -4091,13 +4134,13 @@ function Kz.CreateMain(Y)
 						end);
 					end;
 				end;
-				function Z(Y)
+				local function Z(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseButton1 or Y.UserInputType == Enum.UserInputType.Touch then
 						b = false;
 						S = 0;
 					end;
 				end;
-				function T(Y)
+				local function T(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 						c = Y;
 					end;
@@ -4117,7 +4160,7 @@ function Kz.CreateMain(Y)
 						i.Size = UDim2.new(0, math.clamp(c.Position.X - i.AbsolutePosition.X, 0, K), 0, 6);
 					end;
 				end);
-				function k(Y)
+				local function k(Y)
 					if tonumber(Y) <= Q then
 						i.Size = UDim2.new(0, 0 * K, 0, 6);
 						y(Q);
@@ -4659,7 +4702,7 @@ qz.CreateToggle({
 	end,
 });
 spawn(function()
-	function Y(Y, d)
+	local function Y(Y, d)
 		if Y:FindFirstChild("Humanoid") and (Y:FindFirstChild("HumanoidRootPart") and Y.Humanoid.Health > 0) then
 			if Y.Name == d then
 				repeat
@@ -4669,7 +4712,7 @@ spawn(function()
 			end;
 		end;
 	end;
-	function d()
+	local function d()
 		for Y, d in pairs((game:GetService("Workspace"))._WorldOrigin.EnemySpawns:GetChildren()) do
 			for Y, R in ipairs(MMon) do
 				if string.find(d.Name, R) then
@@ -4986,7 +5029,7 @@ local YF = tz:WaitForChild("Util");
 local dF = require(YF:WaitForChild("GetWaterHeightAtLocation"));
 local RF = ez:FindFirstChild("RF/JobsRemoteFunction");
 local QF = ez:FindFirstChild("RF/Craft");
-function rF()
+local function rF()
 	if not RF then
 		return;
 	end;
@@ -5014,7 +5057,7 @@ function rF()
 		end;
 	end;
 end;
-function aF()
+local function aF()
 	local Y = lz:FindFirstChildOfClass("Humanoid");
 	if not lz:FindFirstChild(_G.SelectedRod) then
 		local d = Bz.Backpack:FindFirstChild(_G.SelectedRod);
@@ -5024,7 +5067,7 @@ function aF()
 		end;
 	end;
 end;
-function wF()
+local function wF()
 	local Y = dF(pz.Position);
 	local d = pz.CFrame.LookVector * (Jz.Rod.MaxLaunchDistance or 50);
 	local R, Q = hz:FindPartOnRayWithIgnoreList(Ray.new(lz.Head.Position, d), { lz, hz.Characters, hz.Enemies });
@@ -5037,7 +5080,7 @@ function wF()
 	end;
 	return Q;
 end;
-function FF()
+local function FF()
 	if not fz then
 		return;
 	end;
@@ -5047,7 +5090,7 @@ function FF()
 		fz:InvokeServer("CastLineAtLocation", wF(), 100, true);
 	end);
 end;
-function MF()
+local function MF()
 	if not fz then
 		return;
 	end;
@@ -11368,7 +11411,7 @@ local Kq = Tz.CreateSection("Esp Items / Entity / Island");
 function isnil(Y)
 	return Y == nil;
 end;
-function nq(Y)
+local function nq(Y)
 	return math.floor(tonumber(Y) + .5);
 end;
 Number = math.random(1, 1000000);
@@ -12131,7 +12174,7 @@ spawn(function()
 end);
 local Aq = Lz.CreateSection("Fruits Options");
 local uq = {};
-function gq(Y)
+local function gq(Y)
 	local d = tostring(Y);
 	while true do
 		d, k = d:gsub("^(-?%d+)(%d%d%d)", "%1,%2");
@@ -12495,7 +12538,7 @@ cq.CreateButton({ Title = "Hop to Lowest Pings Server", Callback = function()
 		local Y = game:GetService("HttpService");
 		local d = game:GetService("TeleportService");
 		local R = game:GetService("Stats");
-		function Q(d, R)
+		local function Q(d, R)
 			local Q = string.format("https://games.roblox.com/v1/games/%d/servers/Public?limit=%d", d, R);
 			local r, a = pcall(function()
 					return Y:JSONDecode(game:HttpGet(Q));
@@ -12842,14 +12885,14 @@ spawn(function()
 	end;
 end);
 local Zq = game.Players.LocalPlayer;
-function Tq(Y)
+local function Tq(Y)
 	if not Y then
 		return false;
 	end;
 	local d = Y:FindFirstChild("Humanoid");
 	return d and d.Health > 0;
 end;
-function kq(Y, d)
+local function kq(Y, d)
 	local R = (game:GetService("Workspace")).Enemies:GetChildren();
 	local Q = (game:GetService("Players")):GetPlayers();
 	local r = {};
@@ -13005,8 +13048,6 @@ task.spawn(function()
 			end;
 		end);
 	end);
-end);				elseif GetBP("Flame-Flame") then
-ight) before the attack module loads
 pcall(function()
 	local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules", 10);
 	if not Modules then
@@ -14769,7 +14810,7 @@ local Fz = {
 		["Border Color"] = Color3.fromRGB(155, 45, 255),
 		["Click Effect Color"] = Color3.fromRGB(230, 230, 230),
 		["Setting Icon Color"] = Color3.fromRGB(230, 230, 230),
-		["Logo Image"] = "rbxassetid://87473648624192",
+		["Logo Image"] = "rbxassetid://140053788856550",
 		["Search Icon Color"] = Color3.fromRGB(255, 255, 255),
 		["Search Icon Highlight Color"] = Color3.fromRGB(155, 45, 255),
 		["GUI Text Color"] = Color3.fromRGB(230, 230, 230),
@@ -14810,7 +14851,7 @@ local nz = {};
 local Iz = game:GetService("TweenService");
 local Wz = game:GetService("UserInputService");
 local Nz = game:GetService("RunService");
-function Dz(Y, d)
+local function Dz(Y, d)
 	local R = nil;
 	local Q = nil;
 	local r = nil;
@@ -14883,7 +14924,7 @@ local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
 gz.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 gz.AnchorPoint = Vector2.new(0, 1);
-gz.Image = "rbxassetid://87473648624192";
+gz.Image = "rbxassetid://140053788856550";
 gz.Size = UDim2.new(0, 50, 0, 50);
 gz.BorderColor3 = Color3.fromRGB(0, 0, 0);
 gz.Position = UDim2.new(.01, 0, .99, 0);
@@ -15005,7 +15046,7 @@ local Uz = function(Y)
 			N.AutomaticSize = Enum.AutomaticSize.Y;
 			N.TextWrapped = true;
 		end;
-		function z()
+		local function z()
 			(Iz:Create(r, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { Position = UDim2.new(1, 0, 0, 0) })):Play();
 			wait(.25);
 			Q:Destroy();
@@ -15124,7 +15165,7 @@ function Kz.CreateMain(Y)
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
-	F.Image = "rbxassetid://77901393544576";
+	F.Image = "rbxassetid://140053788856550";
 	M.Name = "TextLabelMain";
 	M.Parent = w;
 	M.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -15811,7 +15852,7 @@ function Kz.CreateMain(Y)
 				u.Padding = UDim.new(0, 5);
 				local z = Instance.new("UICorner", n);
 				z.CornerRadius = UDim.new(0, 2);
-				function i(Y)
+				local function i(Y)
 					local d = Y and UDim2.new(1, -12, 1, -12) or UDim2.new(0, 0, 0, 0);
 					local R = UDim2.new(.5, 0, .5, 0);
 					local Q = Vector2.new(.5, .5);
@@ -15821,7 +15862,7 @@ function Kz.CreateMain(Y)
 				if a then
 					i(r);
 				end;
-				function U()
+				local function U()
 					r = not r;
 					i(r);
 				end;
@@ -16246,7 +16287,7 @@ function Kz.CreateMain(Y)
 				local H = false;
 				local S = {};
 				local o = {};
-				function Z()
+				local function Z()
 					for Y in W(S) do
 						S[Y] = nil;
 					end;
@@ -16257,7 +16298,7 @@ function Kz.CreateMain(Y)
 					end;
 					b.Text = string.lower(b.Text);
 				end;
-				function T()
+				local function T()
 					local Y = {};
 					for Y, d in W(o) do
 						if string.find(d, b.Text) then
@@ -16272,7 +16313,7 @@ function Kz.CreateMain(Y)
 						end;
 					end;
 				end;
-				function k()
+				local function k()
 					for Y, d in next, v:GetChildren() do
 						if d:IsA("Frame") then
 							d:Destroy();
@@ -16280,7 +16321,7 @@ function Kz.CreateMain(Y)
 					end;
 				end;
 				local L = Q;
-				function P(Y)
+				local function P(Y)
 					W = Y or W;
 					k();
 					o = {};
@@ -16510,7 +16551,7 @@ function Kz.CreateMain(Y)
 								local d;
 								local R = 0;
 								local w = 0;
-								function M(d)
+								local function M(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										w = tick();
 										d.Changed:Connect(function()
@@ -16521,13 +16562,13 @@ function Kz.CreateMain(Y)
 										end);
 									end;
 								end;
-								function K(d)
+								local function K(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										Y = false;
 										w = 0;
 									end;
 								end;
-								function n(Y)
+								local function n(Y)
 									if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 										d = Y;
 									end;
@@ -16552,7 +16593,7 @@ function Kz.CreateMain(Y)
 								local d;
 								local R = 0;
 								local w = 0;
-								function M(d)
+								local function M(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										w = tick();
 										d.Changed:Connect(function()
@@ -16563,13 +16604,13 @@ function Kz.CreateMain(Y)
 										end);
 									end;
 								end;
-								function K(d)
+								local function K(d)
 									if d.UserInputType == Enum.UserInputType.MouseButton1 or d.UserInputType == Enum.UserInputType.Touch then
 										Y = false;
 										w = 0;
 									end;
 								end;
-								function n(Y)
+								local function n(Y)
 									if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 										d = Y;
 									end;
@@ -16590,7 +16631,7 @@ function Kz.CreateMain(Y)
 									end;
 								end);
 							end;
-							function b(Y)
+							local function b(Y)
 								if tonumber(Y) <= Q then
 									z.Size = UDim2.new(0, 0 * F, 0, 6);
 									y(Q);
@@ -17118,7 +17159,7 @@ function Kz.CreateMain(Y)
 				local c;
 				local H = 0;
 				local S = 0;
-				function o(Y)
+				local function o(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseButton1 or Y.UserInputType == Enum.UserInputType.Touch then
 						S = tick();
 						Y.Changed:Connect(function()
@@ -17129,13 +17170,13 @@ function Kz.CreateMain(Y)
 						end);
 					end;
 				end;
-				function Z(Y)
+				local function Z(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseButton1 or Y.UserInputType == Enum.UserInputType.Touch then
 						b = false;
 						S = 0;
 					end;
 				end;
-				function T(Y)
+				local function T(Y)
 					if Y.UserInputType == Enum.UserInputType.MouseMovement or Y.UserInputType == Enum.UserInputType.Touch then
 						c = Y;
 					end;
@@ -17155,7 +17196,7 @@ function Kz.CreateMain(Y)
 						i.Size = UDim2.new(0, math.clamp(c.Position.X - i.AbsolutePosition.X, 0, K), 0, 6);
 					end;
 				end);
-				function k(Y)
+				local function k(Y)
 					if tonumber(Y) <= Q then
 						i.Size = UDim2.new(0, 0 * K, 0, 6);
 						y(Q);
@@ -17697,7 +17738,7 @@ qz.CreateToggle({
 	end,
 });
 spawn(function()
-	function Y(Y, d)
+	local function Y(Y, d)
 		if Y:FindFirstChild("Humanoid") and (Y:FindFirstChild("HumanoidRootPart") and Y.Humanoid.Health > 0) then
 			if Y.Name == d then
 				repeat
@@ -17707,7 +17748,7 @@ spawn(function()
 			end;
 		end;
 	end;
-	function d()
+	local function d()
 		for Y, d in pairs((game:GetService("Workspace"))._WorldOrigin.EnemySpawns:GetChildren()) do
 			for Y, R in ipairs(MMon) do
 				if string.find(d.Name, R) then
@@ -18024,7 +18065,7 @@ local YF = tz:WaitForChild("Util");
 local dF = require(YF:WaitForChild("GetWaterHeightAtLocation"));
 local RF = ez:FindFirstChild("RF/JobsRemoteFunction");
 local QF = ez:FindFirstChild("RF/Craft");
-function rF()
+local function rF()
 	if not RF then
 		return;
 	end;
@@ -18052,7 +18093,7 @@ function rF()
 		end;
 	end;
 end;
-function aF()
+local function aF()
 	local Y = lz:FindFirstChildOfClass("Humanoid");
 	if not lz:FindFirstChild(_G.SelectedRod) then
 		local d = Bz.Backpack:FindFirstChild(_G.SelectedRod);
@@ -18062,7 +18103,7 @@ function aF()
 		end;
 	end;
 end;
-function wF()
+local function wF()
 	local Y = dF(pz.Position);
 	local d = pz.CFrame.LookVector * (Jz.Rod.MaxLaunchDistance or 50);
 	local R, Q = hz:FindPartOnRayWithIgnoreList(Ray.new(lz.Head.Position, d), { lz, hz.Characters, hz.Enemies });
@@ -18075,7 +18116,7 @@ function wF()
 	end;
 	return Q;
 end;
-function FF()
+local function FF()
 	if not fz then
 		return;
 	end;
@@ -18085,7 +18126,7 @@ function FF()
 		fz:InvokeServer("CastLineAtLocation", wF(), 100, true);
 	end);
 end;
-function MF()
+local function MF()
 	if not fz then
 		return;
 	end;
@@ -24406,7 +24447,7 @@ local Kq = Tz.CreateSection("Esp Items / Entity / Island");
 function isnil(Y)
 	return Y == nil;
 end;
-function nq(Y)
+local function nq(Y)
 	return math.floor(tonumber(Y) + .5);
 end;
 Number = math.random(1, 1000000);
@@ -25169,7 +25210,7 @@ spawn(function()
 end);
 local Aq = Lz.CreateSection("Fruits Options");
 local uq = {};
-function gq(Y)
+local function gq(Y)
 	local d = tostring(Y);
 	while true do
 		d, k = d:gsub("^(-?%d+)(%d%d%d)", "%1,%2");
@@ -25533,7 +25574,7 @@ cq.CreateButton({ Title = "Hop to Lowest Pings Server", Callback = function()
 		local Y = game:GetService("HttpService");
 		local d = game:GetService("TeleportService");
 		local R = game:GetService("Stats");
-		function Q(d, R)
+		local function Q(d, R)
 			local Q = string.format("https://games.roblox.com/v1/games/%d/servers/Public?limit=%d", d, R);
 			local r, a = pcall(function()
 					return Y:JSONDecode(game:HttpGet(Q));
@@ -25880,14 +25921,14 @@ spawn(function()
 	end;
 end);
 local Zq = game.Players.LocalPlayer;
-function Tq(Y)
+local function Tq(Y)
 	if not Y then
 		return false;
 	end;
 	local d = Y:FindFirstChild("Humanoid");
 	return d and d.Health > 0;
 end;
-function kq(Y, d)
+local function kq(Y, d)
 	local R = (game:GetService("Workspace")).Enemies:GetChildren();
 	local Q = (game:GetService("Players")):GetPlayers();
 	local r = {};
