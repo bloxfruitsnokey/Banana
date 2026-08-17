@@ -1761,7 +1761,7 @@ local Fz = {
 	["Border Color"] = Color3.fromRGB(155, 45, 255),
 	["Click Effect Color"] = Color3.fromRGB(220, 190, 255),
 	["Setting Icon Color"] = Color3.fromRGB(235, 220, 255),
-	["Logo Image"] = "rbxassetid://5009915795",
+	["Logo Image"] = "rbxassetid://88329907835665",
 
 	["Search Icon Color"] = Color3.fromRGB(245, 240, 255),
 	["Search Icon Highlight Color"] = Color3.fromRGB(175, 55, 255),
@@ -1888,7 +1888,7 @@ local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
 gz.BackgroundColor3 = Color3.fromRGB(30, 30, 30);
 gz.AnchorPoint = Vector2.new(0, 1);
-gz.Image = "rbxassetid://5009915795";
+gz.Image = "rbxassetid://88329907835665";
 gz.Size = UDim2.new(0, 50, 0, 50);
 gz.BorderColor3 = Color3.fromRGB(0, 0, 0);
 gz.Position = UDim2.new(.01, 0, .99, 0);
@@ -1955,7 +1955,7 @@ local Uz = function(Y)
 		local A = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 		local u = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 		local g = D .. ("," .. (A .. ("," .. u)));
-		K.Text = "<font color=\"rgb(" .. (g .. (")\">True Hub</font> " .. dz.TitleNameNoti));
+		K.Text = "<font color=\"rgb(" .. (g .. (")\">GB</font> " .. dz.TitleNameNoti));
 		K.Name = "TextLabelNoti";
 		K.Parent = w;
 		K.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -2089,7 +2089,7 @@ function Kz.CreateMain(Y)
 	local U = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 	local C = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 	local v = i .. ("," .. (U .. ("," .. C)));
-	M.Text = "<font color=\"rgb(" .. (v .. ")\">True Hub </font> : Blox Fruits");
+	M.Text = "<font color=\"rgb(" .. (v .. ")\">GB </font> : Blox Fruits");
 	z = Instance.new("ImageLabel");
 	z.Name = "MainContainer";
 	z.Parent = Q;
@@ -2129,7 +2129,7 @@ function Kz.CreateMain(Y)
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
-	F.Image = "rbxassetid://5009915795";
+	F.Image = "rbxassetid://88329907835665";
 	M.Name = "TextLabelMain";
 	M.Parent = w;
 	M.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -2146,7 +2146,7 @@ function Kz.CreateMain(Y)
 	local c = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 	local H = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 	local S = b .. ("," .. (c .. ("," .. H)));
-	M.Text = "<font color=\"rgb(" .. (S .. ")\">True Hub </font> : Blox Fruits");
+	M.Text = "<font color=\"rgb(" .. (S .. ")\">GB </font> : Blox Fruits");
 	K.Name = "Background1";
 	K.Parent = g;
 	K.Position = UDim2.new(0, 5, 0, 0);
