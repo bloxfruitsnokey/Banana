@@ -1761,7 +1761,7 @@ local Fz = {
     ["Border Color"] = Color3.fromRGB(255, 59, 48),
     ["Click Effect Color"] = Color3.fromRGB(242, 242, 247),
     ["Setting Icon Color"] = Color3.fromRGB(242, 242, 247),
-    ["Logo Image"] = "rbxassetid://5009915795",
+    ["Logo Image"] = "rbxassetid://83650936903180",
 
     ["Search Icon Color"] = Color3.fromRGB(242, 242, 247),
     ["Search Icon Highlight Color"] = Color3.fromRGB(255, 59, 48),
@@ -1889,7 +1889,7 @@ local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
 gz.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 gz.AnchorPoint = Vector2.new(0, 1);
-gz.Image = "rbxassetid://5009915795";
+gz.Image = "rbxassetid://83650936903180";
 gz.Size = UDim2.new(0, 50, 0, 50);
 gz.BorderColor3 = Color3.fromRGB(0, 0, 0);
 gz.Position = UDim2.new(.01, 0, .99, 0);
@@ -2130,7 +2130,7 @@ function Kz.CreateMain(Y)
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
-	F.Image = "rbxassetid://5009915795";
+	F.Image = "rbxassetid://83650936903180";
 	M.Name = "TextLabelMain";
 	M.Parent = w;
 	M.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
