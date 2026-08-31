@@ -954,7 +954,7 @@ spawn(function()
 					local Y = Instance.new("Highlight");
 					Y.Name = "highlight";
 					Y.Enabled = true;
-					Y.FillColor = Color3.fromRGB(135, 45, 180);
+					Y.FillColor = Color3.fromRGB(185, 85, 20);
 					Y.OutlineColor = Color3.fromRGB(255, 255, 255);
 					Y.FillTransparency = .5;
 					Y.OutlineTransparency = .2;
@@ -1758,37 +1758,37 @@ local rz;
 local az;
 local wz = {};
 local Fz = {
-		["Border Color"] = Color3.fromRGB(135, 45, 180),
-		["Click Effect Color"] = Color3.fromRGB(230, 220, 240),
-		["Setting Icon Color"] = Color3.fromRGB(210, 200, 220),
-		["Logo Image"] = "rbxassetid://80321251857775",
-		["Search Icon Color"] = Color3.fromRGB(235, 225, 240),
-		["Search Icon Highlight Color"] = Color3.fromRGB(185, 45, 75),
-		["GUI Text Color"] = Color3.fromRGB(225, 215, 230),
-		["Text Color"] = Color3.fromRGB(230, 220, 235),
-		["Placeholder Text Color"] = Color3.fromRGB(145, 135, 155),
-		["Title Text Color"] = Color3.fromRGB(185, 45, 75),
-		["Background Main Color"] = Color3.fromRGB(8, 6, 12),
-		["Background 1 Color"] = Color3.fromRGB(24, 16, 32),
+		["Border Color"] = Color3.fromRGB(185, 85, 20),
+		["Click Effect Color"] = Color3.fromRGB(245, 225, 190),
+		["Setting Icon Color"] = Color3.fromRGB(225, 205, 170),
+		["Logo Image"] = "rbxassetid://5009915795",
+		["Search Icon Color"] = Color3.fromRGB(240, 225, 195),
+		["Search Icon Highlight Color"] = Color3.fromRGB(220, 135, 25),
+		["GUI Text Color"] = Color3.fromRGB(225, 215, 195),
+		["Text Color"] = Color3.fromRGB(235, 225, 205),
+		["Placeholder Text Color"] = Color3.fromRGB(155, 140, 115),
+		["Title Text Color"] = Color3.fromRGB(225, 150, 35),
+		["Background Main Color"] = Color3.fromRGB(12, 8, 5),
+		["Background 1 Color"] = Color3.fromRGB(35, 22, 12),
 		["Background 1 Transparency"] = .25,
-		["Background 2 Color"] = Color3.fromRGB(55, 45, 65),
-		["Background 3 Color"] = Color3.fromRGB(13, 9, 18),
+		["Background 2 Color"] = Color3.fromRGB(75, 48, 22),
+		["Background 3 Color"] = Color3.fromRGB(20, 12, 7),
 		["Background Image"] = "",
-		["Page Selected Color"] = Color3.fromRGB(185, 45, 75),
-		["Section Text Color"] = Color3.fromRGB(165, 55, 195),
-		["Section Underline Color"] = Color3.fromRGB(135, 45, 180),
-		["Toggle Border Color"] = Color3.fromRGB(135, 45, 180),
-		["Toggle Checked Color"] = Color3.fromRGB(225, 215, 230),
-		["Toggle Desc Color"] = Color3.fromRGB(155, 145, 165),
-		["Button Color"] = Color3.fromRGB(28, 20, 35),
-		["Label Color"] = Color3.fromRGB(28, 20, 35),
-		["Dropdown Icon Color"] = Color3.fromRGB(210, 200, 220),
-		["Dropdown Selected Color"] = Color3.fromRGB(185, 45, 75),
-		["Dropdown Selected Check Color"] = Color3.fromRGB(185, 45, 75),
-		["Textbox Highlight Color"] = Color3.fromRGB(165, 55, 195),
-		["Box Highlight Color"] = Color3.fromRGB(165, 55, 195),
-		["Slider Line Color"] = Color3.fromRGB(55, 20, 65),
-		["Slider Highlight Color"] = Color3.fromRGB(185, 45, 75),
+		["Page Selected Color"] = Color3.fromRGB(215, 125, 20),
+		["Section Text Color"] = Color3.fromRGB(220, 140, 25),
+		["Section Underline Color"] = Color3.fromRGB(190, 85, 15),
+		["Toggle Border Color"] = Color3.fromRGB(185, 85, 20),
+		["Toggle Checked Color"] = Color3.fromRGB(240, 215, 170),
+		["Toggle Desc Color"] = Color3.fromRGB(165, 145, 115),
+		["Button Color"] = Color3.fromRGB(42, 26, 13),
+		["Label Color"] = Color3.fromRGB(42, 26, 13),
+		["Dropdown Icon Color"] = Color3.fromRGB(225, 205, 170),
+		["Dropdown Selected Color"] = Color3.fromRGB(220, 135, 25),
+		["Dropdown Selected Check Color"] = Color3.fromRGB(235, 175, 55),
+		["Textbox Highlight Color"] = Color3.fromRGB(215, 125, 20),
+		["Box Highlight Color"] = Color3.fromRGB(215, 125, 20),
+		["Slider Line Color"] = Color3.fromRGB(85, 45, 15),
+		["Slider Highlight Color"] = Color3.fromRGB(225, 145, 25),
 		["Tween Animation 1 Speed"] = Rz and 0 or .25,
 		["Tween Animation 2 Speed"] = Rz and 0 or .5,
 		["Tween Animation 3 Speed"] = Rz and 0 or .1,
@@ -1887,7 +1887,7 @@ local zz = Instance.new("UICorner", gz);
 zz.CornerRadius = UDim.new(1, 8);
 local iz = Instance.new("UIStroke", gz);
 iz.Thickness = .6;
-iz.Color = Color3.fromRGB(135, 45, 180);
+iz.Color = Color3.fromRGB(185, 85, 20);
 function nz.Getcolor(Y)
 	return { math.floor(Y.r * 255), math.floor(Y.g * 255), math.floor(Y.b * 255) };
 end;
@@ -2735,7 +2735,7 @@ function Kz.CreateMain(Y)
 				n.Name = "check";
 				n.Parent = K;
 				n.AnchorPoint = Vector2.new(.5, .5);
-				n.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				n.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				n.BackgroundTransparency = 0;
 				n.Position = UDim2.new(.5, 0, .5, 0);
 				n.Size = UDim2.new(0, 0, 0, 0);
@@ -2852,7 +2852,7 @@ function Kz.CreateMain(Y)
 				r.BackgroundTransparency = 1;
 				r.SelectionOrder = 0;
 				r.SizeConstraint = Enum.SizeConstraint.RelativeXY;
-				r.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				r.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				local a = Instance.new("Frame", r);
 				a.LayoutOrder = 0;
 				a.BorderMode = Enum.BorderMode.Outline;
@@ -2899,7 +2899,7 @@ function Kz.CreateMain(Y)
 				n.Draggable = false;
 				n.RichText = false;
 				n.SelectionOrder = 0;
-				n.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				n.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				n.BorderMode = Enum.BorderMode.Outline;
 				n.TextStrokeColor3 = Color3.new(0, 0, 0);
 				n.AnchorPoint = Vector2.new(0, 0);
@@ -2933,13 +2933,13 @@ function Kz.CreateMain(Y)
 				I.Style = Enum.FrameStyle.Custom;
 				I.Position = UDim2.new(1, -8, .5, 0);
 				I.SelectionOrder = 0;
-				I.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				I.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				local W = Instance.new("UICorner", I);
 				W.CornerRadius = UDim.new(0, 12);
 				local N = Instance.new("UIGradient", I);
 				N.Enabled = true;
 				N.Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0, 0), NumberSequenceKeypoint.new(1, 0, 0) });
-				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(135, 45, 180)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(135, 45, 180)) });
+				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(185, 85, 20)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(185, 85, 20)) });
 				N.Offset = Vector2.new(0, 0);
 				N.Rotation = 90;
 				local D = Instance.new("TextButton", I);
@@ -2959,7 +2959,7 @@ function Kz.CreateMain(Y)
 				D.SelectionOrder = 0;
 				D.TextYAlignment = Enum.TextYAlignment.Center;
 				D.TextScaled = false;
-				D.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				D.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				D.BorderMode = Enum.BorderMode.Outline;
 				D.Selectable = true;
 				D.AnchorPoint = Vector2.new(0, 0);
@@ -3029,7 +3029,7 @@ function Kz.CreateMain(Y)
 				g.Position = UDim2.new(.5, 0, .5, 0);
 				g.SliceScale = 1;
 				g.BorderSizePixel = 1;
-				g.BackgroundColor3 = Color3.fromRGB(135, 45, 180);
+				g.BackgroundColor3 = Color3.fromRGB(185, 85, 20);
 				D.MouseButton1Click:Connect(function()
 					Q();
 				end);
