@@ -954,8 +954,8 @@ spawn(function()
 					local Y = Instance.new("Highlight");
 					Y.Name = "highlight";
 					Y.Enabled = true;
-					Y.FillColor = Color3.fromRGB(210, 210, 210);
-					Y.OutlineColor = Color3.fromRGB(255, 255, 255);
+					Y.FillColor = Color3.fromRGB(255, 215, 0);
+					Y.OutlineColor = Color3.fromRGB(255, 215, 0);
 					Y.FillTransparency = .5;
 					Y.OutlineTransparency = .2;
 					Y.Parent = d.Character;
@@ -1758,37 +1758,37 @@ local rz;
 local az;
 local wz = {};
 local Fz = {
-		["Border Color"] = Color3.fromRGB(210, 210, 210),
-		["Click Effect Color"] = Color3.fromRGB(245, 245, 245),
-		["Setting Icon Color"] = Color3.fromRGB(90, 90, 90),
+		["Border Color"] = Color3.fromRGB(255, 215, 0),
+		["Click Effect Color"] = Color3.fromRGB(45, 45, 45),
+		["Setting Icon Color"] = Color3.fromRGB(255, 215, 0),
 		["Logo Image"] = "rbxassetid://5009915795",
-		["Search Icon Color"] = Color3.fromRGB(80, 80, 80),
-		["Search Icon Highlight Color"] = Color3.fromRGB(180, 180, 180),
-		["GUI Text Color"] = Color3.fromRGB(35, 35, 35),
-		["Text Color"] = Color3.fromRGB(35, 35, 35),
+		["Search Icon Color"] = Color3.fromRGB(255, 215, 0),
+		["Search Icon Highlight Color"] = Color3.fromRGB(220, 220, 220),
+		["GUI Text Color"] = Color3.fromRGB(255, 215, 0),
+		["Text Color"] = Color3.fromRGB(255, 215, 0),
 		["Placeholder Text Color"] = Color3.fromRGB(150, 150, 150),
-		["Title Text Color"] = Color3.fromRGB(45, 45, 45),
-		["Background Main Color"] = Color3.fromRGB(255, 255, 255),
-		["Background 1 Color"] = Color3.fromRGB(255, 255, 255),
+		["Title Text Color"] = Color3.fromRGB(255, 215, 0),
+		["Background Main Color"] = Color3.fromRGB(0, 0, 0),
+		["Background 1 Color"] = Color3.fromRGB(0, 0, 0),
 		["Background 1 Transparency"] = 0,
-		["Background 2 Color"] = Color3.fromRGB(255, 255, 255),
-		["Background 3 Color"] = Color3.fromRGB(255, 255, 255),
+		["Background 2 Color"] = Color3.fromRGB(0, 0, 0),
+		["Background 3 Color"] = Color3.fromRGB(0, 0, 0),
 		["Background Image"] = "",
-		["Page Selected Color"] = Color3.fromRGB(235, 235, 235),
-		["Section Text Color"] = Color3.fromRGB(45, 45, 45),
-		["Section Underline Color"] = Color3.fromRGB(210, 210, 210),
+		["Page Selected Color"] = Color3.fromRGB(35, 35, 35),
+		["Section Text Color"] = Color3.fromRGB(255, 215, 0),
+		["Section Underline Color"] = Color3.fromRGB(70, 70, 70),
 		["Toggle Border Color"] = Color3.fromRGB(180, 180, 180),
-		["Toggle Checked Color"] = Color3.fromRGB(70, 70, 70),
-		["Toggle Desc Color"] = Color3.fromRGB(130, 130, 130),
-		["Button Color"] = Color3.fromRGB(245, 245, 245),
-		["Label Color"] = Color3.fromRGB(245, 245, 245),
-		["Dropdown Icon Color"] = Color3.fromRGB(90, 90, 90),
-		["Dropdown Selected Color"] = Color3.fromRGB(235, 235, 235),
-		["Dropdown Selected Check Color"] = Color3.fromRGB(70, 70, 70),
-		["Textbox Highlight Color"] = Color3.fromRGB(190, 190, 190),
-		["Box Highlight Color"] = Color3.fromRGB(190, 190, 190),
-		["Slider Line Color"] = Color3.fromRGB(215, 215, 215),
-		["Slider Highlight Color"] = Color3.fromRGB(100, 100, 100),
+		["Toggle Checked Color"] = Color3.fromRGB(255, 215, 0),
+		["Toggle Desc Color"] = Color3.fromRGB(160, 160, 160),
+		["Button Color"] = Color3.fromRGB(25, 25, 25),
+		["Label Color"] = Color3.fromRGB(25, 25, 25),
+		["Dropdown Icon Color"] = Color3.fromRGB(255, 215, 0),
+		["Dropdown Selected Color"] = Color3.fromRGB(35, 35, 35),
+		["Dropdown Selected Check Color"] = Color3.fromRGB(255, 215, 0),
+		["Textbox Highlight Color"] = Color3.fromRGB(80, 80, 80),
+		["Box Highlight Color"] = Color3.fromRGB(80, 80, 80),
+		["Slider Line Color"] = Color3.fromRGB(70, 70, 70),
+		["Slider Highlight Color"] = Color3.fromRGB(255, 215, 0),
 		["Tween Animation 1 Speed"] = Rz and 0 or .25,
 		["Tween Animation 2 Speed"] = Rz and 0 or .5,
 		["Tween Animation 3 Speed"] = Rz and 0 or .1,
@@ -1873,7 +1873,7 @@ nz.NotiGui.Parent = game.Players.LocalPlayer.PlayerGui;
 nz.HideGui.Parent = game.Players.LocalPlayer.PlayerGui;
 local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
-gz.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+gz.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 gz.AnchorPoint = Vector2.new(0, 1);
 gz.Image = "rbxassetid://5009915795";
 gz.Size = UDim2.new(0, 50, 0, 50);
@@ -1887,7 +1887,7 @@ local zz = Instance.new("UICorner", gz);
 zz.CornerRadius = UDim.new(1, 8);
 local iz = Instance.new("UIStroke", gz);
 iz.Thickness = .6;
-iz.Color = Color3.fromRGB(210, 210, 210);
+iz.Color = Color3.fromRGB(255, 215, 0);
 function nz.Getcolor(Y)
 	return { math.floor(Y.r * 255), math.floor(Y.g * 255), math.floor(Y.b * 255) };
 end;
@@ -2085,7 +2085,7 @@ function Kz.CreateMain(Y)
 	z.Transparency = .8;
 	local m = Instance.new("UIStroke", z);
 	m.Thickness = 2;
-	m.Color = Color3.fromRGB(255, 255, 255);
+	m.Color = Color3.fromRGB(255, 215, 0);
 	m.Transparency = .8;
 	dz.ReadyForGuiLoaded = true;
 	-- Background image removed
@@ -2094,25 +2094,25 @@ function Kz.CreateMain(Y)
 	a.Parent = z;
 	u.Name = "Concacontainer";
 	u.Parent = z;
-	u.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	u.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	u.BackgroundTransparency = 1.0;
 	u.ClipsDescendants = true;
 	u.Position = UDim2.new(0, 0, 0, 30);
 	u.Size = UDim2.new(1, 0, 1, -30);
 	g.Name = "Concacmain";
 	g.Parent = u;
-	g.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	g.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	g.BackgroundTransparency = 1.0;
 	g.Selectable = true;
 	g.Size = UDim2.new(1, 0, 1, 0);
 	w.Name = "TopMain";
 	w.Parent = z;
-	w.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	w.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	w.BackgroundTransparency = 1.0;
 	w.Size = UDim2.new(1, 0, 0, 25);
 	F.Name = "Ruafimg";
 	F.Parent = w;
-	F.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	F.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
@@ -2209,13 +2209,13 @@ function Kz.CreateMain(Y)
 	T.Parent = Z;
 	k.Name = "SearchFrame";
 	k.Parent = Z;
-	k.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	k.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	k.BackgroundTransparency = 1.0;
 	k.Size = UDim2.new(0, 20, 0, 20);
 	L.Name = "SearchIcon";
 	L.Parent = k;
 	L.AnchorPoint = Vector2.new(.5, .5);
-	L.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	L.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	L.BackgroundTransparency = 1.0;
 	L.Position = UDim2.new(.5, 0, .5, 0);
 	L.Size = UDim2.new(0, 16, 0, 16);
@@ -2223,7 +2223,7 @@ function Kz.CreateMain(Y)
 	L.ImageColor3 = dz.UIColor["Search Icon Color"];
 	P.Name = "Search Button";
 	P.Parent = k;
-	P.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	P.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	P.BackgroundTransparency = 1.0;
 	P.Size = UDim2.new(1, 0, 1, 0);
 	P.Font = Enum.Font.SourceSans;
@@ -2232,7 +2232,7 @@ function Kz.CreateMain(Y)
 	P.TextSize = 14.0;
 	j.Name = "Search Box";
 	j.Parent = Z;
-	j.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	j.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 	j.BackgroundTransparency = 1.0;
 	j.Position = UDim2.new(0, 30, 0, 0);
 	j.Size = UDim2.new(1, -30, 1, 0);
@@ -2398,13 +2398,13 @@ function Kz.CreateMain(Y)
 		v.Parent = C;
 		m.Name = "SearchFrame";
 		m.Parent = C;
-		m.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+		m.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 		m.BackgroundTransparency = 1.0;
 		m.Size = UDim2.new(0, 20, 0, 20);
 		y.Name = "SearchIcon";
 		y.Parent = m;
 		y.AnchorPoint = Vector2.new(.5, .5);
-		y.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+		y.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 		y.BackgroundTransparency = 1.0;
 		y.Position = UDim2.new(.5, 0, .5, 0);
 		y.Size = UDim2.new(0, 16, 0, 16);
@@ -2412,7 +2412,7 @@ function Kz.CreateMain(Y)
 		y.ImageColor3 = dz.UIColor["Search Icon Color"];
 		b.Name = "Search Button";
 		b.Parent = m;
-		b.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+		b.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 		b.BackgroundTransparency = 1.0;
 		b.Size = UDim2.new(1, 0, 1, 0);
 		b.Font = Enum.Font.SourceSans;
@@ -2421,7 +2421,7 @@ function Kz.CreateMain(Y)
 		b.TextSize = 14.0;
 		c.Name = "Search Box";
 		c.Parent = C;
-		c.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+		c.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 		c.BackgroundTransparency = 1.0;
 		c.Position = UDim2.new(0, 30, 0, 0);
 		c.Size = UDim2.new(1, -30, 1, 0);
@@ -2599,7 +2599,7 @@ function Kz.CreateMain(Y)
 				r.Name = "VisibilityButton";
 				r.Parent = M;
 				r.AnchorPoint = Vector2.new(1, .5);
-				r.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+				r.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				r.BackgroundTransparency = 1.0;
 				r.BorderColor3 = Color3.fromRGB(0, 0, 0);
 				r.BorderSizePixel = 0;
@@ -2735,7 +2735,7 @@ function Kz.CreateMain(Y)
 				n.Name = "check";
 				n.Parent = K;
 				n.AnchorPoint = Vector2.new(.5, .5);
-				n.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				n.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				n.BackgroundTransparency = 0;
 				n.Position = UDim2.new(.5, 0, .5, 0);
 				n.Size = UDim2.new(0, 0, 0, 0);
@@ -2852,7 +2852,7 @@ function Kz.CreateMain(Y)
 				r.BackgroundTransparency = 1;
 				r.SelectionOrder = 0;
 				r.SizeConstraint = Enum.SizeConstraint.RelativeXY;
-				r.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				r.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				local a = Instance.new("Frame", r);
 				a.LayoutOrder = 0;
 				a.BorderMode = Enum.BorderMode.Outline;
@@ -2899,7 +2899,7 @@ function Kz.CreateMain(Y)
 				n.Draggable = false;
 				n.RichText = false;
 				n.SelectionOrder = 0;
-				n.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				n.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				n.BorderMode = Enum.BorderMode.Outline;
 				n.TextStrokeColor3 = Color3.new(0, 0, 0);
 				n.AnchorPoint = Vector2.new(0, 0);
@@ -2933,13 +2933,13 @@ function Kz.CreateMain(Y)
 				I.Style = Enum.FrameStyle.Custom;
 				I.Position = UDim2.new(1, -8, .5, 0);
 				I.SelectionOrder = 0;
-				I.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				I.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				local W = Instance.new("UICorner", I);
 				W.CornerRadius = UDim.new(0, 12);
 				local N = Instance.new("UIGradient", I);
 				N.Enabled = true;
 				N.Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0, 0), NumberSequenceKeypoint.new(1, 0, 0) });
-				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(210, 210, 210)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(210, 210, 210)) });
+				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(255, 215, 0)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(255, 215, 0)) });
 				N.Offset = Vector2.new(0, 0);
 				N.Rotation = 90;
 				local D = Instance.new("TextButton", I);
@@ -2959,7 +2959,7 @@ function Kz.CreateMain(Y)
 				D.SelectionOrder = 0;
 				D.TextYAlignment = Enum.TextYAlignment.Center;
 				D.TextScaled = false;
-				D.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				D.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				D.BorderMode = Enum.BorderMode.Outline;
 				D.Selectable = true;
 				D.AnchorPoint = Vector2.new(0, 0);
@@ -3029,7 +3029,7 @@ function Kz.CreateMain(Y)
 				g.Position = UDim2.new(.5, 0, .5, 0);
 				g.SliceScale = 1;
 				g.BorderSizePixel = 1;
-				g.BackgroundColor3 = Color3.fromRGB(210, 210, 210);
+				g.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 				D.MouseButton1Click:Connect(function()
 					Q();
 				end);
@@ -3308,7 +3308,7 @@ function Kz.CreateMain(Y)
 							w.Name = "SampleItemBG";
 							w.Parent = Q;
 							w.AnchorPoint = Vector2.new(.5, .5);
-							w.BackgroundColor3 = d and dz.UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 255, 255);
+							w.BackgroundColor3 = d and dz.UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 215, 0);
 							w.BackgroundTransparency = d and .5 or 1;
 							w.BorderColor3 = Color3.fromRGB(27, 42, 53);
 							w.Position = UDim2.new(.5, 0, .5, 0);
@@ -3318,14 +3318,14 @@ function Kz.CreateMain(Y)
 							F.Parent = w;
 							M.Name = "SampleItemTitle";
 							M.Parent = w;
-							M.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+							M.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 							M.BackgroundTransparency = 1.0;
 							M.BorderColor3 = Color3.fromRGB(27, 42, 53);
 							M.Position = UDim2.new(0, 10, 0, 0);
 							M.Size = UDim2.new(1, -40, 0, 25);
 							M.Font = Enum.Font.GothamBlack;
 							M.Text = Y;
-							M.TextColor3 = Color3.fromRGB(255, 255, 255);
+							M.TextColor3 = Color3.fromRGB(255, 215, 0);
 							M.TextSize = 14.0;
 							M.TextStrokeTransparency = .5;
 							M.TextXAlignment = Enum.TextXAlignment.Left;
@@ -3343,7 +3343,7 @@ function Kz.CreateMain(Y)
 							K.ImageTransparency = d and 0 or 1;
 							I.Name = "SampleItemButton";
 							I.Parent = Q;
-							I.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+							I.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 							I.BackgroundTransparency = 1.0;
 							I.BorderColor3 = Color3.fromRGB(0, 0, 0);
 							I.BorderSizePixel = 0;
@@ -3356,20 +3356,20 @@ function Kz.CreateMain(Y)
 								if d then
 									return;
 								end;
-								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })):Play();
+								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 215, 0) })):Play();
 								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundTransparency = .7 })):Play();
 							end);
 							I.MouseLeave:Connect(function()
 								if d then
 									return;
 								end;
-								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })):Play();
+								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 215, 0) })):Play();
 								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundTransparency = 1 })):Play();
 							end);
 							I.MouseButton1Click:Connect(function()
 								d = not d;
 								(Iz:Create(K, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { ImageTransparency = d and 0 or 1 })):Play();
-								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = d and dz.UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 255, 255) })):Play();
+								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = d and dz.UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 215, 0) })):Play();
 								(Iz:Create(w, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundTransparency = d and .5 or 1 })):Play();
 								if n then
 									n(Y, d);
@@ -3622,7 +3622,7 @@ function Kz.CreateMain(Y)
 								a.Name = "SampleItemBG";
 								a.Parent = Y;
 								a.AnchorPoint = Vector2.new(.5, .5);
-								a.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+								a.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 								a.BackgroundTransparency = 1;
 								a.BorderColor3 = Color3.fromRGB(27, 42, 53);
 								a.Position = UDim2.new(.5, 0, .5, 0);
@@ -3632,14 +3632,14 @@ function Kz.CreateMain(Y)
 								w.Parent = a;
 								F.Name = "SampleItemTitle";
 								F.Parent = a;
-								F.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+								F.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 								F.BackgroundTransparency = 1.0;
 								F.BorderColor3 = Color3.fromRGB(27, 42, 53);
 								F.Position = UDim2.new(0, 10, 0, 0);
 								F.Size = UDim2.new(1, -40, 0, 25);
 								F.Font = Enum.Font.GothamBlack;
 								F.Text = d;
-								F.TextColor3 = Color3.fromRGB(255, 255, 255);
+								F.TextColor3 = Color3.fromRGB(255, 215, 0);
 								F.TextSize = 14.0;
 								F.TextStrokeTransparency = .5;
 								F.TextXAlignment = Enum.TextXAlignment.Left;
@@ -3657,7 +3657,7 @@ function Kz.CreateMain(Y)
 								M.ImageTransparency = 1;
 								K.Name = "SampleItemButton";
 								K.Parent = Y;
-								K.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+								K.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
 								K.BackgroundTransparency = 1.0;
 								K.BorderColor3 = Color3.fromRGB(0, 0, 0);
 								K.BorderSizePixel = 0;
@@ -3670,14 +3670,14 @@ function Kz.CreateMain(Y)
 									if c.Value == d then
 										return;
 									end;
-									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })):Play();
+									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 215, 0) })):Play();
 									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundTransparency = .7 })):Play();
 								end);
 								K.MouseLeave:Connect(function()
 									if c.Value == d then
 										return;
 									end;
-									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })):Play();
+									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundColor3 = Color3.fromRGB(255, 215, 0) })):Play();
 									(Iz:Create(a, TweenInfo.new(dz.UIColor["Tween Animation 1 Speed"]), { BackgroundTransparency = 1 })):Play();
 								end);
 								K.MouseButton1Click:Connect(function()
@@ -11493,7 +11493,7 @@ DevEsp = function()
 							R.TextYAlignment = "Top";
 							R.BackgroundTransparency = 1;
 							R.TextStrokeTransparency = .5;
-							R.TextColor3 = Color3.fromRGB(255, 255, 255);
+							R.TextColor3 = Color3.fromRGB(255, 215, 0);
 							R.Text = d.Name .. (" \n" .. (nq(((game:GetService("Players")).LocalPlayer.Character.Head.Position - d.Handle.Position).Magnitude / 3) .. " M"));
 						else
 							d.Handle["NameEsp" .. Number].TextLabel.Text = "[" .. (d.Name .. ("]" .. ("   \n" .. (nq(((game:GetService("Players")).LocalPlayer.Character.Head.Position - d.Handle.Position).Magnitude / 3) .. " M"))));
