@@ -1761,7 +1761,7 @@ local Fz = {
 		["Border Color"] = Color3.fromRGB(75, 75, 75),
 		["Click Effect Color"] = Color3.fromRGB(55, 55, 55),
 		["Setting Icon Color"] = Color3.fromRGB(220, 220, 220),
-		["Logo Image"] = "rbxassetid://5009915795",
+		["Logo Image"] = "rbxassetid://118179630608358",
 		["Search Icon Color"] = Color3.fromRGB(220, 220, 220),
 		["Search Icon Highlight Color"] = Color3.fromRGB(150, 150, 150),
 		["GUI Text Color"] = Color3.fromRGB(220, 220, 220),
@@ -1780,8 +1780,8 @@ local Fz = {
 		["Toggle Border Color"] = Color3.fromRGB(100, 100, 100),
 		["Toggle Checked Color"] = Color3.fromRGB(220, 220, 220),
 		["Toggle Desc Color"] = Color3.fromRGB(155, 155, 155),
-		["Button Color"] = Color3.fromRGB(105, 105, 105),
-		["Label Color"] = Color3.fromRGB(105, 105, 105),
+		["Button Color"] = Color3.fromRGB(38, 38, 38),
+		["Label Color"] = Color3.fromRGB(225, 225, 225),
 		["Dropdown Icon Color"] = Color3.fromRGB(215, 215, 215),
 		["Dropdown Selected Color"] = Color3.fromRGB(50, 50, 50),
 		["Dropdown Selected Check Color"] = Color3.fromRGB(220, 220, 220),
@@ -1875,7 +1875,7 @@ local gz = Instance.new("ImageButton", nz.HideGui);
 gz.BorderSizePixel = 0;
 gz.BackgroundColor3 = Color3.fromRGB(75, 75, 75);
 gz.AnchorPoint = Vector2.new(0, 1);
-gz.Image = "rbxassetid://5009915795";
+gz.Image = "rbxassetid://118179630608358";
 gz.Size = UDim2.new(0, 50, 0, 50);
 gz.BorderColor3 = Color3.fromRGB(0, 0, 0);
 gz.Position = UDim2.new(.01, 0, .99, 0);
@@ -1942,7 +1942,7 @@ local Uz = function(Y)
 		local A = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 		local u = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 		local g = D .. ("," .. (A .. ("," .. u)));
-		K.Text = "<font color=\"rgb(" .. (g .. (")\">Banana Hub</font> " .. dz.TitleNameNoti));
+		K.Text = "<font color=\"rgb(" .. (g .. (")\">Koko Hub</font> " .. dz.TitleNameNoti));
 		K.Name = "TextLabelNoti";
 		K.Parent = w;
 		K.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -2076,7 +2076,7 @@ function Kz.CreateMain(Y)
 	local U = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 	local C = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 	local v = i .. ("," .. (U .. ("," .. C)));
-	M.Text = "<font color=\"rgb(" .. (v .. ")\">Banana Hub </font> : Blox Fruits");
+	M.Text = "<font color=\"rgb(" .. (v .. ")\">Koko Hub </font> : Blox Fruits");
 	z = Instance.new("ImageLabel");
 	z.Name = "MainContainer";
 	z.Parent = Q;
@@ -2116,7 +2116,7 @@ function Kz.CreateMain(Y)
 	F.BackgroundTransparency = 1.0;
 	F.Position = UDim2.new(0, 5, 0, dz.T1 and 5 or 0);
 	F.Size = UDim2.new(0, dz.T1 and 30 or 25, 0, dz.T1 and 15 or 25);
-	F.Image = "rbxassetid://5009915795";
+	F.Image = "rbxassetid://118179630608358";
 	M.Name = "TextLabelMain";
 	M.Parent = w;
 	M.BackgroundColor3 = Color3.fromRGB(230, 230, 230);
@@ -2133,7 +2133,7 @@ function Kz.CreateMain(Y)
 	local c = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[2]);
 	local H = tostring((nz.Getcolor(dz.UIColor["Title Text Color"]))[3]);
 	local S = b .. ("," .. (c .. ("," .. H)));
-	M.Text = "<font color=\"rgb(" .. (S .. ")\">Banana Hub </font> : Blox Fruits");
+	M.Text = "<font color=\"rgb(" .. (S .. ")\">Koko Hub </font> : Blox Fruits");
 	K.Name = "Background1";
 	K.Parent = g;
 	K.Position = UDim2.new(0, 5, 0, 0);
