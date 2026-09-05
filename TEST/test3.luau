@@ -954,7 +954,7 @@ spawn(function()
 					local Y = Instance.new("Highlight");
 					Y.Name = "highlight";
 					Y.Enabled = true;
-					Y.FillColor = Color3.fromRGB(255, 215, 0);
+					Y.FillColor = Color3.fromRGB(145, 70, 220);
 					Y.OutlineColor = Color3.fromRGB(255, 255, 255);
 					Y.FillTransparency = .5;
 					Y.OutlineTransparency = .2;
@@ -1887,7 +1887,7 @@ local zz = Instance.new("UICorner", gz);
 zz.CornerRadius = UDim.new(1, 8);
 local iz = Instance.new("UIStroke", gz);
 iz.Thickness = .6;
-iz.Color = Color3.fromRGB(255, 215, 0);
+iz.Color = Color3.fromRGB(145, 70, 220);
 function nz.Getcolor(Y)
 	return { math.floor(Y.r * 255), math.floor(Y.g * 255), math.floor(Y.b * 255) };
 end;
@@ -2735,7 +2735,7 @@ function Kz.CreateMain(Y)
 				n.Name = "check";
 				n.Parent = K;
 				n.AnchorPoint = Vector2.new(.5, .5);
-				n.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				n.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				n.BackgroundTransparency = 0;
 				n.Position = UDim2.new(.5, 0, .5, 0);
 				n.Size = UDim2.new(0, 0, 0, 0);
@@ -2852,7 +2852,7 @@ function Kz.CreateMain(Y)
 				r.BackgroundTransparency = 1;
 				r.SelectionOrder = 0;
 				r.SizeConstraint = Enum.SizeConstraint.RelativeXY;
-				r.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				r.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				local a = Instance.new("Frame", r);
 				a.LayoutOrder = 0;
 				a.BorderMode = Enum.BorderMode.Outline;
@@ -2899,7 +2899,7 @@ function Kz.CreateMain(Y)
 				n.Draggable = false;
 				n.RichText = false;
 				n.SelectionOrder = 0;
-				n.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				n.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				n.BorderMode = Enum.BorderMode.Outline;
 				n.TextStrokeColor3 = Color3.new(0, 0, 0);
 				n.AnchorPoint = Vector2.new(0, 0);
@@ -2933,13 +2933,13 @@ function Kz.CreateMain(Y)
 				I.Style = Enum.FrameStyle.Custom;
 				I.Position = UDim2.new(1, -8, .5, 0);
 				I.SelectionOrder = 0;
-				I.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				I.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				local W = Instance.new("UICorner", I);
 				W.CornerRadius = UDim.new(0, 12);
 				local N = Instance.new("UIGradient", I);
 				N.Enabled = true;
 				N.Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0, 0), NumberSequenceKeypoint.new(1, 0, 0) });
-				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(255, 215, 0)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(255, 215, 0)) });
+				N.Color = ColorSequence.new({ ColorSequenceKeypoint.new(.0, Color3.fromRGB(145, 70, 220)), ColorSequenceKeypoint.new(1.0, Color3.fromRGB(145, 70, 220)) });
 				N.Offset = Vector2.new(0, 0);
 				N.Rotation = 90;
 				local D = Instance.new("TextButton", I);
@@ -2959,7 +2959,7 @@ function Kz.CreateMain(Y)
 				D.SelectionOrder = 0;
 				D.TextYAlignment = Enum.TextYAlignment.Center;
 				D.TextScaled = false;
-				D.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				D.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				D.BorderMode = Enum.BorderMode.Outline;
 				D.Selectable = true;
 				D.AnchorPoint = Vector2.new(0, 0);
@@ -3029,7 +3029,7 @@ function Kz.CreateMain(Y)
 				g.Position = UDim2.new(.5, 0, .5, 0);
 				g.SliceScale = 1;
 				g.BorderSizePixel = 1;
-				g.BackgroundColor3 = Color3.fromRGB(255, 215, 0);
+				g.BackgroundColor3 = Color3.fromRGB(145, 70, 220);
 				D.MouseButton1Click:Connect(function()
 					Q();
 				end);
