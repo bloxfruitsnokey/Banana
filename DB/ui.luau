@@ -1362,7 +1362,7 @@ function Library:CreateWindow(Setting)
 				check.Name = "check"
 				check.Parent = checkbox
 				check.AnchorPoint = Vector2.new(0.5, 0.5)
-				check.BackgroundColor3 = Color3.fromRGB(255, 206, 27)
+				check.BackgroundColor3 = Color3.fromRGB(0, 255, 102)
 				check.Position = UDim2.new(0.5, 0, 0.5, 0)
 				local cac = 5
 				if Desc then
@@ -1528,7 +1528,7 @@ function Library:CreateWindow(Setting)
              ClickArea_1.Name = "ClickArea"
              ClickArea_1.Parent = RowBG_1
              ClickArea_1.AnchorPoint = Vector2.new(1, 0.5)
-             ClickArea_1.BackgroundColor3 = Color3.fromRGB(255, 206, 27)
+             ClickArea_1.BackgroundColor3 = Color3.fromRGB(0, 255, 102)
              ClickArea_1.Position = UDim2.new(1, -8,0.5, 0)
              ClickArea_1.Size = UDim2.new(0, 94,0, 30)
              ClickArea_1.ClipsDescendants = true  -- THÊM DÒNG NÀY: Ngăn ripple tràn ra
@@ -1539,7 +1539,7 @@ function Library:CreateWindow(Setting)
              UIGradient_1.Parent = ClickArea_1
              UIGradient_1.Color = ColorSequence.new{
                  ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 216, 77)), 
-                 ColorSequenceKeypoint.new(0.4, Color3.fromRGB(255, 206, 27)), 
+                 ColorSequenceKeypoint.new(0.4, Color3.fromRGB(0, 255, 102)), 
                  ColorSequenceKeypoint.new(0.6, Color3.fromRGB(235, 186, 17)), 
                  ColorSequenceKeypoint.new(1, Color3.fromRGB(215, 166, 7))
              }
