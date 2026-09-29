@@ -1682,7 +1682,17 @@ local BoneCount = GRP_Info_Status_Server:AddParagraph({ Title = "Bone Count", Co
 
 local RFSubmarineWorkerSpeak = replicated.Modules.Net["RF/SubmarineWorkerSpeak"]
 GRP_Main_Select_Weapon = Tabs.Main:AddSection("Select Weapon")
-WeaponDropdown = GRP_Main_Select_Weapon:AddDropdown("Select_Weapon", {Title = "Select Weapon", Values = {"Melee","Sword","Blox Fruit","Gun"}, Default = 1, Callback = function(v) _G.ChooseWP = v end})
+WeaponDropdown = GRP_Main_Select_Weapon:AddDropdown("Select_Weapon", {Title = "Select Weapon", Values = {"Melee","Sword","Blox Fruit","Gun"}, Default = "Melee", Callback = function(v) _G.ChooseWP = v end})
+
+pcall(function()
+    for _,v in pairs(plr.Backpack:GetChildren()) do
+        if v.ToolTip == "Melee" then
+            _G.SelectWeapon = v.Name
+            _G.ChooseWP = "Melee"
+            break
+        end
+    end
+end)
 
 
 spawn(function()
@@ -3658,15 +3668,17 @@ end)
 GRP_Main_Farming_Mastery = Tabs.Main:AddSection("Farming Mastery")
 local posMastery = {"Cake","Bone"}
 local SelectIsland = "Cake"
-local Mastery_Config = GRP_Main_Farming_Mastery:AddDropdown("Choose_Island", {Title = "Choose Island", Values = posMastery, Default = 1, Callback = function(Value)
+local Mastery_Config = GRP_Main_Farming_Mastery:AddDropdown("Choose_Island", {Title = "Choose Island", Values = posMastery, Default = "Cake", Callback = function(Value)
   SelectIsland = Value
 end})
+_G.MasteryHealthPct = 70
+_G.SelectedMasterySkills = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true}
 GRP_Main_Farming_Mastery:AddSlider("NPC_Health___Switch_to_Weapon", {Title = "NPC Health % Switch to Weapon", Min = 10, Max = 95, Default = 70, Rounding = 1, Callback = function(v) _G.MasteryHealthPct = v end});
 GRP_Main_Farming_Mastery:AddDropdown("Select_Skills_to_Use", {
     Title = "Select Skills to Use",
     Values = {"Z", "X", "C", "V", "F", "Y"},
     Multi = true,
-    Default = {"Z", "X", "C", "V", "F"},
+    Default = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true},
     Callback = function(Value)
         _G.SelectedMasterySkills = Value
     end
@@ -7875,12 +7887,18 @@ GRP_SeaEvent_Crafting_Items:AddButton({Title = "Craft MythicalScroll", Func = fu
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     end})
 GRP_SeaEvent_Choose_Sea_Event = Tabs.SeaEvent:AddSection("Choose Sea Event")
-
-Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Title = "Select Boats", Values = ListSeaBoat, Default = 1, Callback = function(v) _G.SelectedBoat = v end})
+_G.SelectedBoat = "Guardian"
+Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Title = "Select Boats", Values = ListSeaBoat, Default = "Guardian", Callback = function(v) _G.SelectedBoat = v end})
 GRP_SeaEvent_Choose_Sea_Event:AddButton({Title = "Buy Boats", Func = function()
-        replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
+        local buyBoatCFrame = CFrame.new(-16927.451, 9.086, 433.864)
+        _tp(buyBoatCFrame)
+        task.wait(2)
+        if (buyBoatCFrame.Position - plr.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+            replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
+        end
     end})
-Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Sea_Level", {Title = "Select Sea Level", Values = ListSeaZone, Default = 1, Callback = function(v) _G.DangerSc = v end})
+_G.DangerSc = "Lv 1"
+Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Sea_Level", {Title = "Select Sea Level", Values = ListSeaZone, Default = "Lv 1", Callback = function(v) _G.DangerSc = v end})
 Q = GRP_SeaEvent_Choose_Sea_Event:AddToggle("Auto_Sail_Boat", {Title = "Auto Sail Boat", Default = false, Callback = function(Value)
   _G.SailBoats = Value
 end})
