@@ -7888,17 +7888,11 @@ GRP_SeaEvent_Crafting_Items:AddButton({Title = "Craft MythicalScroll", Func = fu
     end})
 GRP_SeaEvent_Choose_Sea_Event = Tabs.SeaEvent:AddSection("Choose Sea Event")
 _G.SelectedBoat = "Guardian"
-Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Title = "Select Boats", Values = ListSeaBoat, Default = "Guardian", Callback = function(v) _G.SelectedBoat = v end})
+Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Title = "Select Boats", Values = ListSeaBoat, Default = 1, Callback = function(v) _G.SelectedBoat = v end})
 GRP_SeaEvent_Choose_Sea_Event:AddButton({Title = "Buy Boats", Func = function()
-        local buyBoatCFrame = CFrame.new(-16927.451, 9.086, 433.864)
-        _tp(buyBoatCFrame)
-        task.wait(2)
-        if (buyBoatCFrame.Position - plr.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-            replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
-        end
-    end})
-_G.DangerSc = "Lv 1"
-Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Sea_Level", {Title = "Select Sea Level", Values = ListSeaZone, Default = "Lv 1", Callback = function(v) _G.DangerSc = v end})
+  replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
+end})
+Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Sea_Level", {Title = "Select Sea Level", Values = ListSeaZone, Default = 1, Callback = function(v) _G.DangerSc = v end})
 Q = GRP_SeaEvent_Choose_Sea_Event:AddToggle("Auto_Sail_Boat", {Title = "Auto Sail Boat", Default = false, Callback = function(Value)
   _G.SailBoats = Value
 end})
