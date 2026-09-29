@@ -135,7 +135,7 @@ Attack.Mas = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health <= HealthM then
+    if model.Humanoid.Health >= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,20,0))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -156,7 +156,7 @@ Attack.Masgun = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health <= HealthM then
+    if model.Humanoid.Health >= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,35,8))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -7771,10 +7771,8 @@ local ListSeaBoat={"Guardian","PirateGrandBrigade","MarineGrandBrigade","PirateB
 local ListSeaZone={"Lv 1","Lv 2","Lv 3","Lv 4","Lv 5","Lv 6","Lv Infinite"}
 
 
-GRP_SeaEvent_Sea_Event_Setting_Sail:AddButton({Text = "Remove Lighting Effect", Func = function() end})
-
-GRP_SeaEvent_Sea_Event_Setting_Sail:AddToggle("Ship_Speed_Modifier", {Text = "Ship Speed Modifier", Default = false, Callback = function(v) _G.SelectedBoat = v end})
-game:GetService("RunService").RenderStepped:Connect(function()
+getgenv().SetSpeedBoat = 300
+spawn(function() game:GetService("RunService").RenderStepped:Connect(function()
     if getgenv().SpeedBoat then
         local plr = game:GetService("Players").LocalPlayer
         if plr.Character and plr.Character:FindFirstChild("Humanoid") then
@@ -7782,16 +7780,22 @@ game:GetService("RunService").RenderStepped:Connect(function()
                 for _, boat in pairs(game:GetService("Workspace").Boats:GetChildren()) do
                     local seat = boat:FindFirstChildWhichIsA("VehicleSeat")
                     if seat then
-                        seat.MaxSpeed = SetSpeedBoat
+                        seat.MaxSpeed = getgenv().SetSpeedBoat
                     end
                 end
             end
         end
     end
-end)
+end) end)
+GRP_SeaEvent_Sea_Event_Setting_Sail:AddButton({Text = "Remove Lighting Effect", Func = function()
+    pcall(function() game.Lighting.BaseAtmosphere:Destroy() end)
+end})
+GRP_SeaEvent_Sea_Event_Setting_Sail:AddToggle("Ship_Speed_Modifier", {Text = "Ship Speed Modifier", Default = false, Callback = function(v)
+    getgenv().SpeedBoat = v
+end})
 GRP_SeaEvent_Sea_Event_Setting_Sail:AddSlider({Text = "Ship Speed", Min = 0, Max = 1000, Default = 300, Rounding = 0, Callback = function(Value)
-        SetSpeedBoat = Value
-    end})
+    getgenv().SetSpeedBoat = Value
+end})
 GRP_SeaEvent_Sea_Event_Setting_Sail:AddToggle("Auto_Press_W", {Text = "Auto Press W", Default = false, Callback = function(Value)
         getgenv().AutoPressW = Value
     end})
@@ -10312,19 +10316,64 @@ rtxM = GRP_Misc_Graphics_Haki_Stats:AddToggle("Turn_on_RTX_Mode", {Text = "Turn 
   if _G.RTXMode then
     local a = game.Lighting
     local c = Instance.new("ColorCorrectionEffect", a)
-    local e = Instance.new("BloomEffect", a)
-    c.Saturation = 0.4
-    c.Brightness = 0
-    c.Contrast = 0.1
-    e.Size = 24
-    e.Strength = 0.8
-    e.Bloom.Threshold = 0.8
-    e.Bloom.Intensity = 0.3
+    local e = Instance.new("ColorCorrectionEffect", a)
+    OldAmbient = a.Ambient
+    OldBrightness = a.Brightness
+    OldColorShift_Top = a.ColorShift_Top
+    OldBrightnessc = c.Brightness
+    OldContrastc = c.Contrast
+    OldTintColorc = c.TintColor
+    OldTintColore = e.TintColor
+    c.Brightness = 0.176
+    c.Contrast = 0.39
+    c.TintColor = Color3.fromRGB(217, 145, 57)
+    e.TintColor = Color3.fromRGB(217, 145, 57)
+    a.FogEnd = 999
+    spawn(function()
+      while _G.RTXMode do wait()
+        a.Ambient = Color3.fromRGB(33, 33, 33)
+        a.Brightness = 0.3
+        if not _G.RTXMode then break end
+        if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and not plr.Character.HumanoidRootPart:FindFirstChild("PointLight") then
+          local a2 = Instance.new("PointLight")
+          a2.Parent = plr.Character.HumanoidRootPart
+          a2.Range = 15
+          a2.Color = Color3.fromRGB(217, 145, 57)
+        end
+        if not _G.RTXMode then
+          a.Ambient = OldAmbient
+          a.Brightness = OldBrightness
+          a.ColorShift_Top = OldColorShift_Top
+          a.FogEnd = 2500
+          c.Contrast = OldContrastc
+          c.Brightness = OldBrightnessc
+          c.TintColor = OldTintColorc
+          e.TintColor = OldTintColore
+          if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+            local pl = plr.Character.HumanoidRootPart:FindFirstChild("PointLight")
+            if pl then pl:Destroy() end
+          end
+          c:Destroy()
+          e:Destroy()
+          break
+        end
+      end
+    end)
   else
+    pcall(function()
+      if OldAmbient then game.Lighting.Ambient = OldAmbient end
+      if OldBrightness then game.Lighting.Brightness = OldBrightness end
+      if OldColorShift_Top then game.Lighting.ColorShift_Top = OldColorShift_Top end
+      game.Lighting.FogEnd = 2500
+    end)
     for _, v in pairs(game.Lighting:GetChildren()) do
       if v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") then
         v:Destroy()
       end
+    end
+    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+      local pl = plr.Character.HumanoidRootPart:FindFirstChild("PointLight")
+      if pl then pl:Destroy() end
     end
   end
 end})
