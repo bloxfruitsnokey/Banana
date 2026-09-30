@@ -135,7 +135,7 @@ Attack.Mas = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health >= HealthM then
+    if model.Humanoid.Health <= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,20,0))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -156,7 +156,7 @@ Attack.Masgun = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health >= HealthM then
+    if model.Humanoid.Health <= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,35,8))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -7918,7 +7918,7 @@ spawn(function()
     end
   end
 end)
-spawn(function()while wait(Sec)do pcall(function()for a,b in pairs(workspace.Boats:GetChildren())do for c,d in pairs(workspace.Boats[b.Name]:GetDescendants())do if d:IsA("BasePart")then if _G.SailBoats or _G.Prehis_Find or _G.FindMirage or _G.SailBoat_Hydra or _G.AutofindKitIs then d.CanCollide=false else d.CanCollide=true end end end end end)end end)
+spawn(function()while wait(Sec)do pcall(function()for _,boat in pairs(workspace.Boats:GetChildren())do for _,part in pairs(boat:GetDescendants())do if part:IsA("BasePart")then if _G.SailBoats or _G.Prehis_Find or _G.FindMirage or _G.SailBoat_Hydra or _G.AutofindKitIs then part.CanCollide=false else part.CanCollide=true end end end end end)end end)
 
 GRP_SeaEvent_Entity_Sea_Event = Tabs.SeaEvent:AddLeftGroupbox("Entity Sea Event")
 
@@ -10313,10 +10313,18 @@ GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "ChangeBusoStage", Func = functio
 end})
 rtxM = GRP_Misc_Graphics_Haki_Stats:AddToggle("Turn_on_RTX_Mode", {Text = "Turn on RTX Mode", Default = false, Callback = function(v)
   _G.RTXMode = v
+  local a = game.Lighting
+  -- destroy any old RTX effects first
+  for _, fx in pairs(a:GetChildren()) do
+    if fx.Name == "RTXColorCorrection" or fx.Name == "RTXTint" then
+      fx:Destroy()
+    end
+  end
   if _G.RTXMode then
-    local a = game.Lighting
     local c = Instance.new("ColorCorrectionEffect", a)
+    c.Name = "RTXColorCorrection"
     local e = Instance.new("ColorCorrectionEffect", a)
+    e.Name = "RTXTint"
     OldAmbient = a.Ambient
     OldBrightness = a.Brightness
     OldColorShift_Top = a.ColorShift_Top
@@ -10334,45 +10342,29 @@ rtxM = GRP_Misc_Graphics_Haki_Stats:AddToggle("Turn_on_RTX_Mode", {Text = "Turn 
         a.Ambient = Color3.fromRGB(33, 33, 33)
         a.Brightness = 0.3
         if not _G.RTXMode then break end
-        if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and not plr.Character.HumanoidRootPart:FindFirstChild("PointLight") then
+        if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and not plr.Character.HumanoidRootPart:FindFirstChild("RTXPointLight") then
           local a2 = Instance.new("PointLight")
+          a2.Name = "RTXPointLight"
           a2.Parent = plr.Character.HumanoidRootPart
           a2.Range = 15
           a2.Color = Color3.fromRGB(217, 145, 57)
-        end
-        if not _G.RTXMode then
-          a.Ambient = OldAmbient
-          a.Brightness = OldBrightness
-          a.ColorShift_Top = OldColorShift_Top
-          a.FogEnd = 2500
-          c.Contrast = OldContrastc
-          c.Brightness = OldBrightnessc
-          c.TintColor = OldTintColorc
-          e.TintColor = OldTintColore
-          if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
-            local pl = plr.Character.HumanoidRootPart:FindFirstChild("PointLight")
-            if pl then pl:Destroy() end
-          end
-          c:Destroy()
-          e:Destroy()
-          break
         end
       end
     end)
   else
     pcall(function()
-      if OldAmbient then game.Lighting.Ambient = OldAmbient end
-      if OldBrightness then game.Lighting.Brightness = OldBrightness end
-      if OldColorShift_Top then game.Lighting.ColorShift_Top = OldColorShift_Top end
-      game.Lighting.FogEnd = 2500
+      if OldAmbient then a.Ambient = OldAmbient end
+      if OldBrightness then a.Brightness = OldBrightness end
+      if OldColorShift_Top then a.ColorShift_Top = OldColorShift_Top end
+      a.FogEnd = 2500
     end)
-    for _, v in pairs(game.Lighting:GetChildren()) do
-      if v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") then
-        v:Destroy()
+    for _, fx in pairs(a:GetChildren()) do
+      if fx.Name == "RTXColorCorrection" or fx.Name == "RTXTint" then
+        fx:Destroy()
       end
     end
     if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
-      local pl = plr.Character.HumanoidRootPart:FindFirstChild("PointLight")
+      local pl = plr.Character.HumanoidRootPart:FindFirstChild("RTXPointLight")
       if pl then pl:Destroy() end
     end
   end
