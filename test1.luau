@@ -135,7 +135,7 @@ Attack.Mas = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health <= HealthM then
+    if model.Humanoid.Health >= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,20,0))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -156,7 +156,7 @@ Attack.Masgun = function(model,Succes)
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
-    if model.Humanoid.Health <= HealthM then
+    if model.Humanoid.Health >= HealthM then
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,35,8))
       local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
       for k, v in pairs(skillsToUse) do
@@ -3679,11 +3679,11 @@ spawn(function()
   while wait(Sec) do
     if _G.FarmMastery_Dev then
       pcall(function()
-        if SelectIsland == "Cake" then         
+        if SelectIsland == "Cake" then
           local v = GetConnectionEnemies(mastery1)
-		  if v then		   
-		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		  if v then
 		    repeat wait()
+		      HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
 		      MousePos = v.HumanoidRootPart.Position
 		      Attack.Mas(v,_G.FarmMastery_Dev)
 		    until _G.FarmMastery_Dev == false or v.Humanoid.Health <= 0 or not v.Parent         		         		        
@@ -3692,9 +3692,9 @@ spawn(function()
 		  end
 		elseif SelectIsland == "Bone" then
           local v = GetConnectionEnemies(mastery2)
-		  if v then		
-		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		  if v then
 		    repeat wait()
+		      HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
 		      MousePos = v.HumanoidRootPart.Position
 		      Attack.Mas(v,_G.FarmMastery_Dev)
 		    until _G.FarmMastery_Dev == false or v.Humanoid.Health <= 0 or not v.Parent		        
@@ -3715,9 +3715,9 @@ spawn(function()
       pcall(function()
         if SelectIsland == "Cake" then
           local v = GetConnectionEnemies(mastery1)
-		  if v then		      
-		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		  if v then
 		    repeat wait()
+		      HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
 		      MousePos = v.HumanoidRootPart.Position
 		      Attack.Masgun(v,_G.FarmMastery_G)
 		      local Modules = replicated:FindFirstChild("Modules")
@@ -3746,9 +3746,9 @@ spawn(function()
 	  	  end
 		elseif SelectIsland == "Bone" then
           local v = GetConnectionEnemies(mastery2)
-		  if v then		      
-		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		  if v then
 		    repeat wait()
+		      HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
 		      MousePos = v.HumanoidRootPart.Position
 		      Attack.Masgun(v,_G.FarmMastery_G)
 		      local Modules = replicated:FindFirstChild("Modules")
@@ -5377,8 +5377,13 @@ spawn(function()
   end
 end)
 GRP_Quests_True_Triple_Katana_Sword = Tabs.Quests:AddLeftGroupbox("True Triple Katana Sword")
-GRP_Quests_True_Triple_Katana_Sword:AddButton({Text = "Buy Legendary Sword", Func = function() end})
-GRP_Quests_True_Triple_Katana_Sword:AddButton({Text = "Buy True Triple Katana Sword", Func = function() end})
+GRP_Quests_True_Triple_Katana_Sword:AddButton({Text = "Buy Legendary Sword", Func = function()
+    for i = 1, 3 do
+        replicated.Remotes.CommF_:InvokeServer("LegendarySwordDealer", tostring(i))
+        task.wait(0.3)
+    end
+end})
+GRP_Quests_True_Triple_Katana_Sword:AddButton({Text = "Buy True Triple Katana Sword", Func = function() replicated.Remotes.CommF_:InvokeServer("MysteriousMan","2") end})
 Q = GRP_Quests_True_Triple_Katana_Sword:AddToggle("Tween_to_Legendary_Sword_Dealer", {Text = "Tween to Legendary Sword Dealer", Default = false, Callback = function(v) _G.Tp_LgS = v end})
 spawn(function()
   while wait(Sec) do
@@ -5931,7 +5936,7 @@ spawn(function()
     end
   end
 end)
-GRP_Quests_Buso_Aura_Colours:AddButton({Text = "Buy Buso Colors", Func = function() end})
+GRP_Quests_Buso_Aura_Colours:AddButton({Text = "Buy Buso Colors", Func = function() replicated.Remotes.CommF_:InvokeServer("ColorsDealer","2") end})
 Q = GRP_Quests_Buso_Aura_Colours:AddToggle("Auto_Rainbow_Colors", {Text = "Auto Rainbow Colors", Default = false, Callback = function(v) _G.Auto_Rainbow_Haki = v end})
 spawn(function()
   pcall(function()
@@ -6717,7 +6722,12 @@ spawn(function()
 end)
 
 
-GRP_Race_Mystic_Island_Full_Moon:AddButton({Text = "Talk With Stone", Func = function() end})
+GRP_Race_Mystic_Island_Full_Moon:AddButton({Text = "Talk With Stone", Func = function()
+    local rf1 = replicated:WaitForChild("Remotes"):WaitForChild("CommF_")
+    rf1:InvokeServer("RaceV4Progress","Begin")
+    rf1:InvokeServer("RaceV4Progress","Check")
+    rf1:InvokeServer("RaceV4Progress","Teleport")
+end})
 GRP_Race_Mystic_Island_Full_Moon:AddToggle("Auto_Look_At_Moon", {Text = "Auto Look At Moon", Default = false, Callback = function(v) _G.Auto_Mink = v end})
 function MoveCamtoMoon()
 workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position,Lighting:GetMoonDirection() + workspace.CurrentCamera.CFrame.Position)
@@ -6957,9 +6967,24 @@ spawn(function()
   end
 end)
 
-GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Temple of Time", Func = function() end})
-GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Ancient One", Func = function() end})
-GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Ancient Clock", Func = function() end})
+GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Temple of Time", Func = function()
+    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+        local MysticIs = CFrame.new(-7754.033203125, 2998.953857421875, -404.7535705566406)
+        _tp(MysticIs)
+    end
+end})
+GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Ancient One", Func = function()
+    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+        local MysticIs = CFrame.new(-5071.541015625, 314.5412902832, -3151.1098632812)
+        _tp(MysticIs)
+    end
+end})
+GRP_Race_Trials_Quest_V4:AddButton({Text = "Teleport to Ancient Clock", Func = function()
+    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+        local MysticIs = CFrame.new(-12471.169921875, 374.94024658203, -7551.677734375)
+        _tp(MysticIs)
+    end
+end})
 Doors = GRP_Race_Trials_Quest_V4:AddToggle("Auto_Teleport_to_Race_Doors", {Text = "Auto Teleport to Race Doors", Default = false, Callback = function(v) _G.TPDoor = v end})
 spawn(function()
   while wait(Sec) do
@@ -7091,7 +7116,10 @@ spawn(function()
 end)
 
 GRP_Prehistoric_Dojo_Quest = Tabs.Prehistoric:AddLeftGroupbox("Dojo Quest")
-GRP_Prehistoric_Dojo_Quest:AddButton({Text = "Button", Func = function() end})
+GRP_Prehistoric_Dojo_Quest:AddButton({Text = "Dojo Quest", Func = function()
+    replicated.Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(5661.5322265625, 1013.0907592773438, -334.9649963378906))
+    _tp(CFrame.new(5814.42724609375, 1208.3267822265625, 884.5785522460938))
+end})
 DojoQ = GRP_Prehistoric_Dojo_Quest:AddToggle("Auto_Dojo_Trainer", {Text = "Auto Dojo Trainer", Default = false, Callback = function(v) end})
 function printBeltName(data) if type(data) == "table" and data.Quest["BeltName"] then return data.Quest["BeltName"] end end
 spawn(function()
@@ -7428,13 +7456,10 @@ end)
 
 GRP_Prehistoric_Volcanic_Crafting = Tabs.Prehistoric:AddLeftGroupbox("Volcanic Crafting")
 
-GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dragonheart", Func = function() end})
-
-GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dragonstorm", Func = function() end})
-
-GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dino Hood", Func = function() end})
-
-GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft T-Rex Skull", Func = function() end})
+GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dragonheart", Func = function() replicated.Remotes.CommF_:InvokeServer("CraftItem", "Craft", "Dragonheart") end})
+GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dragonstorm", Func = function() replicated.Remotes.CommF_:InvokeServer("CraftItem", "Craft", "Dragonstorm") end})
+GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft Dino Hood", Func = function() replicated.Remotes.CommF_:InvokeServer("CraftItem", "Craft", "DinoHood") end})
+GRP_Prehistoric_Volcanic_Crafting:AddButton({Text = "Craft T-Rex Skull", Func = function() replicated.Remotes.CommF_:InvokeServer("CraftItem", "Craft", "TRexSkull") end})
 
 
 GRP_Prehistoric_Prehistoric_Island = Tabs.Prehistoric:AddLeftGroupbox("Prehistoric Island")
@@ -7449,7 +7474,10 @@ spawn(function()
     end
 end)
 
-GRP_Prehistoric_Prehistoric_Island:AddButton({Text = "Craft Volcanic Magnet", Func = function() end})
+GRP_Prehistoric_Prehistoric_Island:AddButton({Text = "Craft Volcanic Magnet", Func = function()
+    local RF = replicated.Modules.Net["RF/Craft"]
+    RF:InvokeServer("PossibleHardcode", "Volcanic Magnet")
+end})
 
 GRP_Prehistoric_Prehistoric_Island:AddToggle("Craft_Volcanic_Magnet", {Text = "Craft Volcanic Magnet", Default = false, Callback = function(v) _G.Prehis_Find = v end})
 
@@ -7872,12 +7900,7 @@ Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Text = "Select Bo
   _G.SelectedBoat = v
 end})
 GRP_SeaEvent_Choose_Sea_Event:AddButton({Text = "Buy Boats", Func = function()
-  local buyBoatCFrame = CFrame.new(-16927.451, 9.086, 433.864)
-  _tp(buyBoatCFrame)
-  task.wait(1.5)
-  if (buyBoatCFrame.Position - plr.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-    replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat or "Guardian")
-  end
+  replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
 end})
 Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Sea_Level", {Text = "Select Sea Level", Values = ListSeaZone, Default = 1, Callback = function(v) _G.DangerSc = v end})
 Q = GRP_SeaEvent_Choose_Sea_Event:AddToggle("Auto_Sail_Boat", {Text = "Auto Sail Boat", Default = false, Callback = function(Value)
@@ -10064,58 +10087,71 @@ spawn(function()
 end)
 
 GRP_Shop_Shop_Options = Tabs.Shop:AddLeftGroupbox("Shop Options")
-GRP_Shop_Shop_Options:AddButton({Text = "Buy Buso", Func = function() end})
-GRP_Shop_Shop_Options:AddButton({Text = "Buy Geppo", Func = function() end})
-GRP_Shop_Shop_Options:AddButton({Text = "Buy Soru", Func = function() end})
-GRP_Shop_Shop_Options:AddButton({Text = "Buy Ken", Func = function() end})
+GRP_Shop_Shop_Options:AddButton({Text = "Buy Buso", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyHaki","Buso") end})
+GRP_Shop_Shop_Options:AddButton({Text = "Buy Geppo", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyHaki","Geppo") end})
+GRP_Shop_Shop_Options:AddButton({Text = "Buy Soru", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyHaki","Soru") end})
+GRP_Shop_Shop_Options:AddButton({Text = "Buy Ken", Func = function() replicated.Remotes.CommF_:InvokeServer("KenTalk","Buy") end})
 
 GRP_Shop_Fighting_Style = Tabs.Shop:AddLeftGroupbox("Fighting - Style")
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Black Leg", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Electro", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Fishman Karate", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy DragonClaw", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Superhuman", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Death Step", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Sharkman Karate", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy ElectricClaw", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy DragonTalon", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy Godhuman", Func = function() end})
-GRP_Shop_Fighting_Style:AddButton({Text = "Buy SanguineArt", Func = function() end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Black Leg", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyBlackLeg") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Electro", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyElectro") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Fishman Karate", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyFishmanKarate") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy DragonClaw", Func = function() replicated.Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Superhuman", Func = function() replicated.Remotes.CommF_:InvokeServer("BuySuperhuman") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Death Step", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyDeathStep") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Sharkman Karate", Func = function() replicated.Remotes.CommF_:InvokeServer("BuySharkmanKarate") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy ElectricClaw", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyElectricClaw") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy DragonTalon", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyDragonTalon") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy Godhuman", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyGodhuman") end})
+GRP_Shop_Fighting_Style:AddButton({Text = "Buy SanguineArt", Func = function() replicated.Remotes.CommF_:InvokeServer("BuySanguineArt") end})
 
 GRP_Shop_Accessory = Tabs.Shop:AddLeftGroupbox("Accessory")
-GRP_Shop_Accessory:AddButton({Text = "Buy Tomoe Ring", Func = function() end})
-GRP_Shop_Accessory:AddButton({Text = "Buy Black Cape", Func = function() end})
-GRP_Shop_Accessory:AddButton({Text = "Buy Swordsman Hat", Func = function() end})
-GRP_Shop_Accessory:AddButton({Text = "Buy Bizarre Rifle", Func = function() end})
-GRP_Shop_Accessory:AddButton({Text = "Buy Ghoul Mask", Func = function() end})
+GRP_Shop_Accessory:AddButton({Text = "Buy Tomoe Ring", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Tomoe Ring") end})
+GRP_Shop_Accessory:AddButton({Text = "Buy Black Cape", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Black Cape") end})
+GRP_Shop_Accessory:AddButton({Text = "Buy Swordsman Hat", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Swordsman Hat") end})
+GRP_Shop_Accessory:AddButton({Text = "Buy Bizarre Rifle", Func = function() replicated.Remotes.CommF_:InvokeServer("Ectoplasm","Buy", 1) end})
+GRP_Shop_Accessory:AddButton({Text = "Buy Ghoul Mask", Func = function() replicated.Remotes.CommF_:InvokeServer("Ectoplasm","Buy", 2) end})
 
 
 
 GRP_Shop_Weapon_World1 = Tabs.Shop:AddLeftGroupbox("Weapon World1")
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Cutlass", Func = function() end})
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Katana", Func = function() end})
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Iron Mace", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Duel Katana", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Triple Katana", Func = function() end})  
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Pipe", Func = function() end})  
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Dual-Headed Blade", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Bisento", Func = function() end})  
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Soul Cane", Func = function() end})
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Slingshot", Func = function() end})
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Musket", Func = function() end})    
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Dual Flintlock", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Flintlock", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Refined Flintlock", Func = function() end})   
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Cannon", Func = function() end}) 
-GRP_Shop_Weapon_World1:AddButton({Text = "Buy Kabucha", Func = function() end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Cutlass", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Cutlass") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Katana", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Katana") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Iron Mace", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Iron Mace") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Duel Katana", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Duel Katana") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Triple Katana", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Triple Katana") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Pipe", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Pipe") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Dual-Headed Blade", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Dual-Headed Blade") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Bisento", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Bisento") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Soul Cane", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Soul Cane") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Slingshot", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Slingshot") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Musket", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Musket") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Dual Flintlock", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Dual Flintlock") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Flintlock", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Flintlock") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Refined Flintlock", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Refined Flintlock") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Cannon", Func = function() replicated.Remotes.CommF_:InvokeServer("BuyItem","Cannon") end})
+GRP_Shop_Weapon_World1:AddButton({Text = "Buy Kabucha", Func = function() replicated.Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","2") end})
 
 GRP_Shop_Fragments_shop = Tabs.Shop:AddLeftGroupbox("Fragments shop")
-GRP_Shop_Fragments_shop:AddButton({Text = "Buy Refund Stats", Func = function() end})
-GRP_Shop_Fragments_shop:AddButton({Text = "Buy Reroll Race", Func = function() end})   
-GRP_Shop_Fragments_shop:AddButton({Text = "Buy Ghoul Race", Func = function() end})	
-GRP_Shop_Fragments_shop:AddButton({Text = "Buy Cyborg Race (2.5k)", Func = function() end})
+GRP_Shop_Fragments_shop:AddButton({Text = "Buy Refund Stats", Func = function() replicated.Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2") end})
+GRP_Shop_Fragments_shop:AddButton({Text = "Buy Reroll Race", Func = function() replicated.Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2") end})
+GRP_Shop_Fragments_shop:AddButton({Text = "Buy Ghoul Race", Func = function() replicated.Remotes.CommF_:InvokeServer("Ectoplasm"," Change", 4) end})
+GRP_Shop_Fragments_shop:AddButton({Text = "Buy Cyborg Race (2.5k)", Func = function() replicated.Remotes.CommF_:InvokeServer("CyborgTrainer"," Buy") end})
 
-GRP_Shop_Fragments_shop:AddButton({Text = "Buy Draco Race", Func = function() end})
+GRP_Shop_Fragments_shop:AddButton({Text = "Buy Draco Race", Func = function()
+    task.spawn(function()
+        _tp(CFrame.new(5814.42724609375, 1208.3267822265625, 884.5785522460938))
+        local targetPosition = Vector3.new(5814.42724609375, 1208.3267822265625, 884.5785522460938)
+        repeat task.wait() until plr.Character and plr.Character.HumanoidRootPart and (plr.Character.HumanoidRootPart.Position - targetPosition).Magnitude < 1
+        local args = {
+            [1] = {
+                ["NPC"] = "Dragon Wizard",
+                ["Command"] = "DragonRace"
+            }
+        }
+        replicated.Modules.Net:FindFirstChild("RF/InteractDragonQuest"):InvokeServer(unpack(args))
+    end)
+end})
 
 GRP_Misc_Server_Function = Tabs.Misc:AddLeftGroupbox("Server - Function")
 GRP_Misc_Server_Function:AddButton({Text = "Redeem All Codes", Func = function()
@@ -10131,7 +10167,9 @@ GRP_Misc_Server_Function:AddButton({Text = "Redeem All Codes", Func = function()
         "ADMIN_TROLL","NEWTROLL","SECRET_ADMIN","staffbattle","NOEXPLOIT",
         "NOOB2ADMIN","CODESLIDE","fruitconcepts","krazydares"
     }
-    local RedeemRemote = replicated:FindFirstChild("Remotes") and replicated.Remotes:FindFirstChild("Redeem")
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local RemotesFolder = ReplicatedStorage:WaitForChild("Remotes")
+    local RedeemRemote = RemotesFolder:FindFirstChild("Redeem")
     if not RedeemRemote then return end
     for _, code in ipairs(codes) do
         task.wait(0)
@@ -10271,7 +10309,7 @@ end})
 GRP_Misc_Player_Gui_Others:AddButton({Text = "Set Marine Team", Func = function()
   replicated.Remotes.CommF_:InvokeServer("SetTeam", "Marines")
 end})
-UnPortal = GRP_Misc_Player_Gui_Others:AddToggle("Unlock_All_Portals", {Text = "Unlock All Portals", Default = false, Callback = function(v) end})
+UnPortal = GRP_Misc_Player_Gui_Others:AddToggle("Unlock_All_Portals", {Text = "Unlock All Portals", Default = false, Callback = function(Value) _G.PortalUnLock = Value end})
 spawn(function()
   while wait(Sec) do
     pcall(function()
@@ -10370,25 +10408,33 @@ rtxM = GRP_Misc_Graphics_Haki_Stats:AddToggle("Turn_on_RTX_Mode", {Text = "Turn 
   end
 end})
 GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "Turn on Fast Mode", Func = function()
-  settings().Rendering.QualityLevel = "Level01"
+  for _, zx in next, workspace:GetDescendants() do
+    if table.find(Past, zx.ClassName) then zx.Material = "Plastic" end
+  end
 end})
 GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "Turn on Low CPU", Func = function()
-  game:GetService("Lighting").GlobalShadows = false
-  game:GetService("Lighting").FogEnd = 9e9
-  game:GetService("Lighting").Brightness = 0
-  for _, v in pairs(game.Workspace:GetDescendants()) do
-    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-      v.Material = Enum.Material.Plastic
-      if v:IsA("Texture") then v:Destroy() end
+  LowCpu()
+end})
+GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "Turn on increase Boats", Func = function()
+  for _, boat in pairs(workspace.Boats:GetChildren()) do
+    if tostring(boat.Owner.Value) == tostring(plr.Name) then
+      for _, part in pairs(boat:GetDescendants()) do
+        if part:IsA("VehicleSeat") then
+          part.MaxSpeed = 350
+          part.Torque = 0.2
+          part.TurnSpeed = 5
+          part.HeadsUpDisplay = true
+        end
+      end
     end
   end
 end})
-GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "Turn on increase Boats", Func = function()
-  local args = {[1] = "UpdateSpawnRegion", [2] = Vector3.new(100000, 100000, 100000)}
-  replicated.Remotes.CommF_:InvokeServer(unpack(args))
-end})
 GRP_Misc_Graphics_Haki_Stats:AddButton({Text = "Remove Sky Fog", Func = function()
-  if game.Lighting:FindFirstChild("Sky") then game.Lighting.Sky:Destroy() end
+  for _, v in pairs(game.Lighting:GetChildren()) do
+    if v.Name == "Sky" or v.Name == "LightingLayers" or v.Name == "SeaTerrorCC" or v.Name == "FantasySky" then
+      v:Destroy()
+    end
+  end
 end})
 
 GRP_Misc_Configure_God = Tabs.Misc:AddLeftGroupbox("Configure - God")
