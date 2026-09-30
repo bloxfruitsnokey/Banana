@@ -7887,8 +7887,8 @@ GRP_SeaEvent_Crafting_Items:AddButton({Title = "Craft MythicalScroll", Func = fu
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     end})
 GRP_SeaEvent_Choose_Sea_Event = Tabs.SeaEvent:AddSection("Choose Sea Event")
-_G.SelectedBoat = "Guardian"
 Q = GRP_SeaEvent_Choose_Sea_Event:AddDropdown("Select_Boats", {Title = "Select Boats", Values = ListSeaBoat, Default = 1, Callback = function(v) _G.SelectedBoat = v end})
+spawn(function() pcall(function() _G.SelectedBoat = ListSeaBoat[1] end) end)
 GRP_SeaEvent_Choose_Sea_Event:AddButton({Title = "Buy Boats", Func = function()
   replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
 end})
