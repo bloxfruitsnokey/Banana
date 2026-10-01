@@ -9096,7 +9096,7 @@ end)
 
 GRP_Raids_Dungeon_Event_Raiding = Tabs.Raids:AddSection("Dungeon Event / Raiding")
 DungeonTables = {"Flame","Ice","Quake","Light","Dark","String","Rumble","Magma","Human: Buddha","Sand","Bird: Phoenix","Dough"}
-Q = GRP_Raids_Dungeon_Event_Raiding:AddDropdown("Select_Chip", {Title = "Select Chip", Values = DungeonTables, Default = 1, Callback = function(Value)
+Q = GRP_Raids_Dungeon_Event_Raiding:AddDropdown("Select_Chip", {Title = "Select Chip", Values = DungeonTables, Default = "", Callback = function(Value)
   _G.SelectChip = Value
 end})
 Q = GRP_Raids_Dungeon_Event_Raiding:AddToggle("Auto_Select_Dungeon_Chip", {Title = "Auto Select Dungeon Chip", Default = false, Callback = function(Value)
@@ -9126,7 +9126,10 @@ spawn(function()
     end
 end)
 GRP_Raids_Dungeon_Event_Raiding:AddButton({Title = "Buy Dungeon Chips [Beli]", Callback = function()
-  if _G.SelectChip and not GetBP("Special Microchip") then replicated.Remotes.CommF_:InvokeServer("RaidsNpc","Select",_G.SelectChip) end
+  if _G.SelectChip and not GetBP("Special Microchip") then
+    replicated.Remotes.CommF_:InvokeServer("RaidsNpc","Select",_G.SelectChip)
+    replicated.Remotes.CommF_:InvokeServer("RaidsNpc","Select",_G.SelectChip)
+  end
 end})
 GRP_Raids_Dungeon_Event_Raiding:AddButton({Title = "Buy Dungeon Chips [Devil Fruit]", Callback = function()
   if GetBP("Special Microchip") then return end
