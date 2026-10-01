@@ -121,41 +121,28 @@ Attack.KillSea = function(model,Succes)
   end
 end
 Attack.Sword = function(model,Succes)
-  if not (model and Succes) then return end
-  if not model:FindFirstChild("HumanoidRootPart") or not model.Humanoid then return end
+  if model and Succes then
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
   weaponSc("Sword")
   _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
   if RandomCFrame then wait(0.1)_tp(model.HumanoidRootPart.CFrame * CFrame.new(0, 30, 25)) wait(0.1)_tp(model.HumanoidRootPart.CFrame * CFrame.new(25, 30, 0)) wait(0.1)_tp(model.HumanoidRootPart.CFrame * CFrame.new(-25, 30 ,0)) wait(0.1)_tp(model.HumanoidRootPart.CFrame * CFrame.new(0, 30, 25)) wait(0.1)_tp(model.HumanoidRootPart.CFrame * CFrame.new(-25, 30, 0))end
-  local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
-  for k, v in pairs(skillsToUse) do
-      if type(k) == "number" then
-          Useskills("Sword", v)
-      elseif type(k) == "string" and v == true then
-          Useskills("Sword", k)
-      elseif type(k) == "string" and type(v) == "string" then
-          Useskills("Sword", k)
-      end
   end
 end
 Attack.Mas = function(model,Succes)
   if model and Succes then
-  if not model:FindFirstChild("HumanoidRootPart") or not model.Humanoid then return end
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
     if model.Humanoid.Health <= HealthM then
-      weaponSc("Blox Fruit")
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,20,0))
-      local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
+      local skillsToUse = _G.SelectedMasterySkills
+      if type(skillsToUse) ~= "table" then skillsToUse = {"Z", "X", "C", "V", "F"} end
       for k, v in pairs(skillsToUse) do
           if type(k) == "number" then
               Useskills("Blox Fruit", v)
           elseif type(k) == "string" and v == true then
-              Useskills("Blox Fruit", k)
-          elseif type(k) == "string" and type(v) == "string" then
               Useskills("Blox Fruit", k)
           end
       end
@@ -167,20 +154,17 @@ Attack.Mas = function(model,Succes)
 end
 Attack.Masgun = function(model,Succes)
   if model and Succes then
-  if not model:FindFirstChild("HumanoidRootPart") or not model.Humanoid then return end
   if not model:GetAttribute("Locked") then model:SetAttribute("Locked",model.HumanoidRootPart.CFrame) end
   PosMon = model:GetAttribute("Locked").Position
   BringEnemy()
     if model.Humanoid.Health <= HealthM then
-      weaponSc("Gun")
       _tp(model.HumanoidRootPart.CFrame * CFrame.new(0,35,8))
-      local skillsToUse = _G.SelectedMasterySkills or {"Z", "X", "C", "V", "F"}
+      local skillsToUse = _G.SelectedMasterySkills
+      if type(skillsToUse) ~= "table" then skillsToUse = {"Z", "X", "C", "V", "F"} end
       for k, v in pairs(skillsToUse) do
           if type(k) == "number" then
               Useskills("Gun", v)
           elseif type(k) == "string" and v == true then
-              Useskills("Gun", k)
-          elseif type(k) == "string" and type(v) == "string" then
               Useskills("Gun", k)
           end
       end
@@ -350,6 +334,15 @@ Useskills = function(weapon, skill)
     elseif skill == "C" then
       vim1:SendKeyEvent(true, "C", false, game);
       vim1:SendKeyEvent(false, "C", false, game);
+    elseif skill == "V" then
+      vim1:SendKeyEvent(true, "V", false, game);
+      vim1:SendKeyEvent(false, "V", false, game);
+    elseif skill == "F" then
+      vim1:SendKeyEvent(true, "F", false, game);
+      vim1:SendKeyEvent(false, "F", false, game);
+    elseif skill == "Y" then
+      vim1:SendKeyEvent(true, "Y", false, game);
+      vim1:SendKeyEvent(false, "Y", false, game);
     end
   elseif weapon == "Sword" then
     weaponSc("Sword")
@@ -360,6 +353,18 @@ Useskills = function(weapon, skill)
     elseif skill == "X" then
       vim1:SendKeyEvent(true, "X", false, game);
       vim1:SendKeyEvent(false, "X", false, game);
+    elseif skill == "C" then
+      vim1:SendKeyEvent(true, "C", false, game);
+      vim1:SendKeyEvent(false, "C", false, game);
+    elseif skill == "V" then
+      vim1:SendKeyEvent(true, "V", false, game);
+      vim1:SendKeyEvent(false, "V", false, game);
+    elseif skill == "F" then
+      vim1:SendKeyEvent(true, "F", false, game);
+      vim1:SendKeyEvent(false, "F", false, game);
+    elseif skill == "Y" then
+      vim1:SendKeyEvent(true, "Y", false, game);
+      vim1:SendKeyEvent(false, "Y", false, game);
     end
   elseif weapon == "Blox Fruit" then
     weaponSc("Blox Fruit")
@@ -372,7 +377,7 @@ Useskills = function(weapon, skill)
       vim1:SendKeyEvent(false, "X", false, game);
     elseif skill == "C" then
       vim1:SendKeyEvent(true, "C", false, game);
-      vim1:SendKeyEvent(false, "C", false, game);        
+      vim1:SendKeyEvent(false, "C", false, game);
     elseif skill == "V" then
       vim1:SendKeyEvent(true, "V", false, game);
       vim1:SendKeyEvent(false, "V", false, game);
@@ -392,6 +397,18 @@ Useskills = function(weapon, skill)
     elseif skill == "X" then
       vim1:SendKeyEvent(true, "X", false, game);
       vim1:SendKeyEvent(false, "X", false, game);
+    elseif skill == "C" then
+      vim1:SendKeyEvent(true, "C", false, game);
+      vim1:SendKeyEvent(false, "C", false, game);
+    elseif skill == "V" then
+      vim1:SendKeyEvent(true, "V", false, game);
+      vim1:SendKeyEvent(false, "V", false, game);
+    elseif skill == "F" then
+      vim1:SendKeyEvent(true, "F", false, game);
+      vim1:SendKeyEvent(false, "F", false, game);
+    elseif skill == "Y" then
+      vim1:SendKeyEvent(true, "Y", false, game);
+      vim1:SendKeyEvent(false, "Y", false, game);
     end
   end
   if weapon == "nil" and skill == "Y" then
@@ -3439,9 +3456,9 @@ end})
 
 local function sendSkillKey(skillKey)
     local virtualInputManager = game:GetService("VirtualInputManager")
-    virtualInputManager:SendKeyEvent(true, skillKey, false, game)
+    virtualInputManager:SendKeyEvent(true, skillKey, true, game)
     wait(0.05)
-    virtualInputManager:SendKeyEvent(false, skillKey, false, game)
+    virtualInputManager:SendKeyEvent(false, skillKey, true, game)
 end
 
 local function equipAndUseSkill(toolType)
@@ -3677,20 +3694,31 @@ task.spawn(function()
     end
 end)
 
+_G.MasteryHealthPct = 70
+_G.SelectedMasterySkills = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true}
 local GRP_Main_Farming_Mastery = Tabs.Main:AddLeftGroupbox("Farming Mastery")
 local posMastery = {"Cake","Bone"}
 local SelectIsland = "Cake"
 GRP_Main_Farming_Mastery:AddDropdown("Choose_Island", {Text = "Choose Island", Values = posMastery, Default = 1, Callback = function(Value)
-        _G.SelectIsland = Value
         SelectIsland = Value
 end})
-_G.MasteryHealthPct = 70
-GRP_Main_Farming_Mastery:AddSlider("Health_Pct", {Text = "NPC Health % Switch to Weapon", Min = 10, Max = 95, Default = 70, Rounding = 0, Callback = function(v)
-        _G.MasteryHealthPct = v
-end})
-_G.SelectedMasterySkills = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true}
-GRP_Main_Farming_Mastery:AddDropdown("Select_Skills", {Text = "Select Skills to Use", Values = {"Z", "X", "C", "V", "F", "Y"}, Multi = true, Default = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true}, Callback = function(Value)
-        _G.SelectedMasterySkills = Value
+GRP_Main_Farming_Mastery:AddSlider({
+        Text = "NPC Health % Switch to Weapon",
+        Min = 10,
+        Max = 95,
+        Default = 70,
+        Rounding = 1,
+        Callback = function(Value)
+                _G.MasteryHealthPct = Value
+        end
+})
+GRP_Main_Farming_Mastery:AddDropdown("Select_Skills", {Text = "Select Skills to Use", Values = {"Z", "X", "C", "V", "F", "Y"}, Multi = true, Default = {["Z"] = true, ["X"] = true, ["C"] = true, ["V"] = true, ["F"] = true}, Callback = function(Key, State)
+        if type(Key) == "table" then
+                _G.SelectedMasterySkills = Key
+        elseif type(Key) == "string" then
+                if type(_G.SelectedMasterySkills) ~= "table" then _G.SelectedMasterySkills = {} end
+                _G.SelectedMasterySkills[Key] = State and true or nil
+        end
 end})
 local MasteryFruits = GRP_Main_Farming_Mastery:AddToggle("Auto_Mastery_Fruits", {Text = "Auto Mastery Fruits", Default = false, Callback = function(Value)
   _G.FarmMastery_Dev = Value
@@ -3703,8 +3731,8 @@ spawn(function()
         if SelectIsland == "Cake" then
           local v = GetConnectionEnemies(mastery1)
           if v then
-            HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
             repeat wait()
+              HealthM = v.Humanoid.MaxHealth * (_G.MasteryHealthPct / 100)
               MousePos = v.HumanoidRootPart.Position
               Attack.Mas(v,_G.FarmMastery_Dev)
             until _G.FarmMastery_Dev == false or v.Humanoid.Health <= 0 or not v.Parent
@@ -3714,8 +3742,8 @@ spawn(function()
         elseif SelectIsland == "Bone" then
           local v = GetConnectionEnemies(mastery2)
           if v then
-            HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
             repeat wait()
+              HealthM = v.Humanoid.MaxHealth * (_G.MasteryHealthPct / 100)
               MousePos = v.HumanoidRootPart.Position
               Attack.Mas(v,_G.FarmMastery_Dev)
             until _G.FarmMastery_Dev == false or v.Humanoid.Health <= 0 or not v.Parent
@@ -3736,26 +3764,66 @@ spawn(function()
       pcall(function()
         if SelectIsland == "Cake" then
           local v = GetConnectionEnemies(mastery1)
-          if v then
-            HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
-            repeat wait()
-              MousePos = v.HumanoidRootPart.Position
-              Attack.Masgun(v, _G.FarmMastery_G)
-            until _G.FarmMastery_G == false or v.Humanoid.Health <= 0 or not v.Parent
-          else
-            _tp(CFrame.new(-1943.676513671875, 251.5095672607422, -12337.880859375))
-          end
-        elseif SelectIsland == "Bone" then
+		  if v then
+		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		    repeat wait()
+		      MousePos = v.HumanoidRootPart.Position
+		      Attack.Masgun(v,_G.FarmMastery_G)
+		      local Modules = replicated:FindFirstChild("Modules")
+              local Net = Modules:FindFirstChild("Net")
+              local RE_ShootGunEvent = Net:FindFirstChild("RE/ShootGunEvent")
+              if plr.Character:FindFirstChildOfClass("Tool").ToolTip ~= "Gun" then return end
+              if plr.Character:FindFirstChildOfClass("Tool") and plr.Character:FindFirstChildOfClass("Tool").Name == 'Skull Guitar' then
+                SoulGuitar = true
+		        plr.Character:FindFirstChildOfClass("Tool").RemoteEvent:FireServer("TAP", MousePos)
+		        if _G.FarmMastery_G then
+		          vim1:SendMouseButtonEvent(0, 0, 0, true, game, 1);wait(0.05)
+                  vim1:SendMouseButtonEvent(0, 0, 0, false, game, 1);wait(0.05)
+		        end
+		      elseif plr.Character:FindFirstChildOfClass("Tool") and plr.Character:FindFirstChildOfClass("Tool").Name ~= 'Skull Guitar' then
+		        SoulGuitar = false
+		        RE_ShootGunEvent:FireServer(MousePos, { v.HumanoidRootPart })
+		        if _G.FarmMastery_G then
+		          vim1:SendMouseButtonEvent(0, 0, 0, true, game, 1);wait(0.05)
+                  vim1:SendMouseButtonEvent(0, 0, 0, false, game, 1);wait(0.05)
+		        end
+		      end
+		    until _G.FarmMastery_G == false or v.Humanoid.Health <= 0 or not v.Parent
+		    SoulGuitar = false
+		  else
+		    _tp(CFrame.new(-1943.676513671875, 251.5095672607422, -12337.880859375))
+	  	  end
+		elseif SelectIsland == "Bone" then
           local v = GetConnectionEnemies(mastery2)
-          if v then
-            HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
-            repeat wait()
-              MousePos = v.HumanoidRootPart.Position
-              Attack.Masgun(v, _G.FarmMastery_G)
-            until _G.FarmMastery_G == false or v.Humanoid.Health <= 0 or not v.Parent
-          else
-            _tp(CFrame.new(-9495.6806640625, 453.58624267578125, 5977.3486328125))
-          end
+		  if v then
+		    HealthM = v.Humanoid.MaxHealth * _G.MasteryHealthPct / 100
+		    repeat wait()
+		      MousePos = v.HumanoidRootPart.Position
+		      Attack.Masgun(v,_G.FarmMastery_G)
+		      local Modules = replicated:FindFirstChild("Modules")
+              local Net = Modules:FindFirstChild("Net")
+              local RE_ShootGunEvent = Net:FindFirstChild("RE/ShootGunEvent")
+              if plr.Character:FindFirstChildOfClass("Tool").ToolTip ~= "Gun" then return end
+              if plr.Character:FindFirstChildOfClass("Tool") and plr.Character:FindFirstChildOfClass("Tool").Name == 'Skull Guitar' then
+                SoulGuitar = true
+		        plr.Character:FindFirstChildOfClass("Tool").RemoteEvent:FireServer("TAP", MousePos)
+		        if _G.FarmMastery_G then
+		          vim1:SendMouseButtonEvent(0, 0, 0, true, game, 1);wait(0.05)
+                  vim1:SendMouseButtonEvent(0, 0, 0, false, game, 1);wait(0.05)
+		        end
+		      elseif plr.Character:FindFirstChildOfClass("Tool") and plr.Character:FindFirstChildOfClass("Tool").Name ~= 'Skull Guitar' then
+		        SoulGuitar = false
+		        RE_ShootGunEvent:FireServer(MousePos, { v.HumanoidRootPart })
+		        if _G.FarmMastery_G then
+		          vim1:SendMouseButtonEvent(0, 0, 0, true, game, 1);wait(0.05)
+                  vim1:SendMouseButtonEvent(0, 0, 0, false, game, 1);wait(0.05)
+		        end
+		      end
+		    until _G.FarmMastery_G == false or v.Humanoid.Health <= 0 or not v.Parent
+		    SoulGuitar = false
+		  else
+		    _tp(CFrame.new(-9495.6806640625, 453.58624267578125, 5977.3486328125))
+	  	  end
         end
       end)
     end
@@ -3769,46 +3837,48 @@ spawn(function()
     pcall(function()
       if _G.FarmMastery_S then
         if SelectIsland == "Cake" then
-          for _, invItem in next, replicated.Remotes.CommF_:InvokeServer("getInventory") do
-            if type(invItem) == "table" then
-              if invItem.Type == "Sword" then
-                local sName = invItem.Name
-                local sMast = tonumber(invItem.Mastery) or 0
-                if sMast >= 1 and sMast <= 599 then
-                  if not GetBP(sName) then
-                    replicated.Remotes.CommF_:InvokeServer("LoadItem", sName)
-                  end
-                  local enemy = GetConnectionEnemies(mastery1)
-                  if enemy then
-                    repeat wait() Attack.Sword(enemy, _G.FarmMastery_S) until _G.FarmMastery_S == false or not enemy.Parent or enemy.Humanoid.Health <= 0
+          for _, v in next, replicated.Remotes.CommF_:InvokeServer("getInventory") do
+            if type(v) == "table" then
+              if v.Type == "Sword" then
+                SwordName = v.Name
+                if tonumber(v.Mastery) >= 1 or tonumber(v.Mastery) <= 599 then
+                  local v = GetConnectionEnemies(mastery1)
+                  if GetBP(SwordName) then
+		            if v then
+                      repeat wait() Attack.Sword(v,_G.FarmMastery_S) until _G.FarmMastery_S == false or not v.Parent or v.Humanoid.Health <= 0
+		            else
+		              _tp(CFrame.new(-1943.676513671875, 251.5095672607422, -12337.880859375))
+		            end
                   else
-                    _tp(CFrame.new(-1943.676513671875, 251.5095672607422, -12337.880859375))
+                    replicated.Remotes.CommF_:InvokeServer("LoadItem",SwordName)
                   end
-                elseif sMast >= 600 then
-                  -- mastery maxed, skip this sword
-                end
+              elseif tonumber(v.Mastery) >= 600 then
+                if GetBP(SwordName) then return nil else replicated.Remotes.CommF_:InvokeServer("LoadItem",SwordName) end
+              end
+                break
               end
             end
           end
         elseif SelectIsland == "Bone" then
-          for _, invItem in next, replicated.Remotes.CommF_:InvokeServer("getInventory") do
-            if type(invItem) == "table" then
-              if invItem.Type == "Sword" then
-                local sName = invItem.Name
-                local sMast = tonumber(invItem.Mastery) or 0
-                if sMast >= 1 and sMast <= 599 then
-                  if not GetBP(sName) then
-                    replicated.Remotes.CommF_:InvokeServer("LoadItem", sName)
-                  end
-                  local enemy = GetConnectionEnemies(mastery2)
-                  if enemy then
-                    repeat wait() Attack.Sword(enemy, _G.FarmMastery_S) until _G.FarmMastery_S == false or not enemy.Parent or enemy.Humanoid.Health <= 0
+          for _, v in next, replicated.Remotes.CommF_:InvokeServer("getInventory") do
+            if type(v) == "table" then
+              if v.Type == "Sword" then
+                SwordName = v.Name
+                if tonumber(v.Mastery) >= 1 or tonumber(v.Mastery) <= 599 then
+                  local v = GetConnectionEnemies(mastery2)
+                  if GetBP(SwordName) then
+		            if v then
+                      repeat wait() Attack.Sword(v,_G.FarmMastery_S) until _G.FarmMastery_S == false or not v.Parent or v.Humanoid.Health <= 0
+		            else
+		              _tp(CFrame.new(-9495.6806640625, 453.58624267578125, 5977.3486328125))
+		            end
                   else
-                    _tp(CFrame.new(-9495.6806640625, 453.58624267578125, 5977.3486328125))
+                    replicated.Remotes.CommF_:InvokeServer("LoadItem",SwordName)
                   end
-                elseif sMast >= 600 then
-                  -- mastery maxed, skip this sword
+                elseif tonumber(v.Mastery) >= 600 then
+                  if GetBP(SwordName) then return nil else replicated.Remotes.CommF_:InvokeServer("LoadItem",SwordName) end
                 end
+                break
               end
             end
           end
@@ -6737,9 +6807,9 @@ task.spawn(function()
         if LookMV3 then
             MoveCamtoMoon()
             replicated.Remotes.CommE:FireServer("ActivateAbility")            
-            UIS:SendKeyEvent(true, "T", false, game)
+            UIS:SendKeyEvent(true, "T", true, game)
             wait(0.5)
-            UIS:SendKeyEvent(false, "T", false, game)
+            UIS:SendKeyEvent(false, "T", true, game)
         end
     end
 end)
@@ -6931,8 +7001,9 @@ spawn(function()
         local BonesTable = {"Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy"}
 	    for i=1,#BonesTable do
           if plr.Character:FindFirstChild("RaceEnergy").Value == 1 then
-            vim1:SendKeyEvent(true, "Y", false, game)
+            vim1:SendKeyEvent(true, "Y", true, game)
             replicated.Remotes.CommF_:InvokeServer("UpgradeRace","Buy")
+            vim1:SendKeyEvent(false, "Y", true, game)
             _tp(CFrame.new(-8987.041015625, 215.862060546875, 5886.71044921875))
 	      elseif plr.Character:FindFirstChild("RaceTransformed").Value == false then
 	        local v = GetConnectionEnemies(BonesTable)
@@ -7309,7 +7380,7 @@ spawn(function()
             local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
             local Magnited = (FlowerPos - playerRoot).Magnitude;
             if (Magnited <= 100) then
-              vim1:SendKeyEvent(true, "E", false, game) wait(1.5) vim1:SendKeyEvent(false, "E", false, game)
+              vim1:SendKeyEvent(true, "E", true, game) wait(1.5) vim1:SendKeyEvent(false, "E", true, game)
             else
               _tp(CFrame.new(FlowerPos));
             end
@@ -7374,8 +7445,9 @@ spawn(function()
         local DragoM = {"Venomous Assailant","Hydra Enforcer"}
 	    for i=1,#DragoM do
           if plr.Character:FindFirstChild("RaceEnergy").Value == 1 then
-            vim1:SendKeyEvent(true, "Y", false, game)
+            vim1:SendKeyEvent(true, "Y", true, game)
             replicated.Remotes.CommF_:InvokeServer("UpgradeRace","Buy",2)
+            vim1:SendKeyEvent(false, "Y", true, game)
             _tp(CFrame.new(4620.61572265625, 1002.2954711914062, 399.0868835449219))
 	      elseif plr.Character:FindFirstChild("RaceTransformed").Value == false then
 	        local v = GetConnectionEnemies(DragoM)
@@ -7577,9 +7649,9 @@ spawn(function()
                         if promptPart and promptPart:FindFirstChild("ProximityPrompt") then
                             if plr:DistanceFromCharacter(promptPart.CFrame.Position) <= 150 then
                                 fireproximityprompt(promptPart.ProximityPrompt, math.huge)
-                                vim1:SendKeyEvent(true, "E", false, game)
+                                vim1:SendKeyEvent(true, "E", true, game)
                                 wait(1.5)
-                                vim1:SendKeyEvent(false, "E", false, game)
+                                vim1:SendKeyEvent(false, "E", true, game)
                             end
                             _tp(promptPart.CFrame)
                         end
@@ -7812,7 +7884,9 @@ spawn(function()
             if getgenv().AutoPressW then
                 local humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
                 if humanoid.Sit == true then
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "W", false, game)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "W", true, game)
+                    task.wait(0.1)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(false, "W", true, game)
                 end
             end
         end)
