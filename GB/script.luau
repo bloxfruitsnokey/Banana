@@ -1484,9 +1484,9 @@ QuestNeta = function()
     }
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloxfruitsnokey/Banana/refs/heads/main/DB/ui.luau"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloxfruitsnokey/Banana/refs/heads/main/GB/ui.luau"))()
 local Window = Library:CreateWindow({
-    Title = "DB Hub",
+    Title = "GB Hub",
     Subtitle = "Blox Fruit Script",
     Image = "rbxassetid://102208424834141"
 })
@@ -10895,8 +10895,8 @@ end
 StartMainLoops()
 
 Library:Notify({
-  Title = "DB Hub",
-  Description = "DB Hub comeback",
-  Icon = "rbxassetid://132684424743910",
+  Title = "GB Hub",
+  Description = "GB Hub comeback",
+  Icon = "rbxassetid://88329907835665",
   Duration = 5
 })
