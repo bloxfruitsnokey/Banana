@@ -443,7 +443,7 @@ function Library:Notify(Setting, bypass)
 end
 
 function Library:CreateWindow(Setting)
-    local TitleNameMain = Setting.Title or "Night Slayer Hub"
+    local TitleNameMain = Setting.Title or "Blox Fruits"
     getgenv().MainDesc = Setting.Desc or Setting.Subtitle or ""
     
     if Setting.Image then
@@ -578,7 +578,7 @@ function Library:CreateWindow(Setting)
 	local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
 	local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
 	local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelMain.Text = "<font color=\"rgb(" .. tostring(color or "255,206,27") .. ")\">" .. tostring(TitleNameMain or "Night Slayer Hub") .. "</font> " .. tostring(getgenv().MainDesc or "")
+    TextLabelMain.Text = "<font color=\"rgb(" .. tostring(color or "255,206,27") .. ")\">" .. tostring(TitleNameMain or "Blox Fruits") .. "</font> " .. tostring(getgenv().MainDesc or "")
 
 	PageControl.Name = "Background1"
 	PageControl.Parent = Concacmain
